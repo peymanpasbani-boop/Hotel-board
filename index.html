@@ -19,7 +19,7 @@ body{
 .header{
     background:#0b1220;
     color:white;
-    padding:18px 20px;
+    padding:16px 20px;
 }
 
 .header-inner{
@@ -48,67 +48,79 @@ body{
 .nav a:hover{ color:white; }
 
 .desc{
-    margin-top:10px;
-    font-size:12.5px;
+    margin-top:8px;
+    font-size:12px;
     color:#94a3b8;
-    line-height:1.5;
+    line-height:1.4;
 }
 
 /* MAIN */
 .container{
     max-width:1100px;
-    margin:20px auto;
+    margin:18px auto;
     padding:0 20px;
 }
 
 .title{
-    font-size:18px;
+    font-size:16px;
     font-weight:600;
-    margin-bottom:12px;
+    margin-bottom:10px;
 }
 
-/* CITY FILTERS */
+/* ===== CITY ROW (ALL IN ONE LINE) ===== */
 .city-filters{
     display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-bottom:12px;
+    gap:8px;
+    flex-wrap:nowrap;          /* مهم: همه در یک سطر */
+    overflow-x:auto;           /* اگر جا نشد اسکرول افقی */
+    margin-bottom:10px;
+    padding-bottom:4px;
 }
 
 .city{
-    padding:10px 14px;
-    border-radius:10px;
+    flex:0 0 auto;
+    padding:8px 12px;
+    border-radius:8px;
     cursor:pointer;
-    font-size:13px;
+    font-size:12.5px;
     font-weight:500;
     transition:0.2s;
-    user-select:none;
+    white-space:nowrap;
+    border:1px solid transparent;
 }
 
+/* softer professional colors */
 .city.all{ background:#eef2ff; color:#1e3a8a; }
-.city.istanbul{ background:#fee2e2; color:#991b1b; }
-.city.baku{ background:#dcfce7; color:#166534; }
-.city.moscow{ background:#e0e7ff; color:#1e3a8a; }
+.city.istanbul{ background:#fff1f2; color:#9f1239; }
+.city.baku{ background:#ecfdf5; color:#065f46; }
+.city.moscow{ background:#eff6ff; color:#1e40af; }
 .city.yerevan{ background:#fff7ed; color:#9a3412; }
 
 .city.active{
-    border:2px solid #111827;
+    border:1px solid #111827;
     transform:scale(1.03);
 }
 
-/* CONTROLS */
+/* ===== CONTROLS (same height, clean row) ===== */
 .controls{
     display:flex;
-    gap:10px;
-    margin-bottom:12px;
+    gap:8px;
+    align-items:center;
     flex-wrap:wrap;
+    margin-bottom:12px;
 }
 
 input,button{
-    padding:10px 12px;
+    height:38px;
+    padding:0 12px;
     border:1px solid #e5e7eb;
     border-radius:8px;
     font-size:13px;
+}
+
+input{
+    flex:1;
+    min-width:180px;
 }
 
 button{
@@ -118,18 +130,20 @@ button{
     cursor:pointer;
 }
 
-button:hover{ background:#1d4ed8; }
+button:hover{
+    background:#1d4ed8;
+}
 
 /* TABLE */
 .table-wrapper{
     background:white;
     border-radius:12px;
     overflow:hidden;
-    box-shadow:0 2px 12px rgba(0,0,0,0.06);
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
 .scroll{
-    max-height:520px;
+    max-height:500px;
     overflow-y:auto;
 }
 
@@ -143,30 +157,30 @@ thead th{
     background:#f9fafb;
     position:sticky;
     top:0;
-    padding:12px;
+    padding:10px;
     text-align:left;
     border-bottom:1px solid #e5e7eb;
 }
 
 tbody td{
-    padding:12px;
+    padding:10px;
     border-bottom:1px solid #f1f5f9;
 }
 
-tbody tr:hover{ background:#f8fafc; }
+tbody tr:hover{
+    background:#f8fafc;
+}
 
 .city-col{ font-weight:600; }
-
 .stars{ color:#fbbf24; }
-
 .price{ font-weight:600; }
 
-/* FOOTER */
+/* ===== FOOTER (compact & aligned) ===== */
 .footer{
-    margin-top:30px;
+    margin-top:24px;
     background:#0b1220;
     color:#cbd5e1;
-    padding:20px;
+    padding:16px 20px;
 }
 
 .footer-inner{
@@ -175,54 +189,41 @@ tbody tr:hover{ background:#f8fafc; }
     display:flex;
     justify-content:space-between;
     flex-wrap:wrap;
-    gap:20px;
-    font-size:13px;
-    line-height:1.6;
+    gap:12px;
+    font-size:12px;
+    line-height:1.4;
 }
 
 .footer h4{
     color:white;
-    margin-bottom:8px;
-    font-size:14px;
-}
-
-.footer a{
-    color:#cbd5e1;
-    text-decoration:none;
-}
-
-.footer a:hover{ color:white; }
-
-.icons{
-    display:flex;
-    gap:10px;
-    margin-top:8px;
-}
-
-.icon{
-    width:32px;
-    height:32px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:8px;
-    background:#111827;
-    font-size:14px;
-    cursor:pointer;
-    transition:0.2s;
-}
-
-.icon:hover{
-    background:#2563eb;
-    color:white;
+    margin:0 0 6px 0;
+    font-size:13px;
 }
 
 .bottom-line{
     text-align:center;
-    margin-top:15px;
-    font-size:12px;
+    margin-top:10px;
+    font-size:11px;
     color:#94a3b8;
 }
+
+.icon-row{
+    display:flex;
+    gap:8px;
+    margin-top:6px;
+}
+
+.icon{
+    width:28px;
+    height:28px;
+    background:#111827;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:6px;
+    font-size:12px;
+}
+.icon:hover{ background:#2563eb; }
 </style>
 </head>
 
@@ -231,10 +232,8 @@ tbody tr:hover{ background:#f8fafc; }
 <!-- HEADER -->
 <div class="header">
     <div class="header-inner">
-
         <div class="top-bar">
             <div class="logo">B2B Hotel Network</div>
-
             <div class="nav">
                 <a href="#">About</a>
                 <a href="#">Contact</a>
@@ -242,11 +241,9 @@ tbody tr:hover{ background:#f8fafc; }
                 <a href="#">Telegram</a>
             </div>
         </div>
-
         <div class="desc">
-            Professional B2B hotel rate platform for Istanbul, Baku, Moscow, and Yerevan. Powered by global hotel APIs and travel systems.
+            Professional B2B hotel rate dashboard for Istanbul, Baku, Moscow, and Yerevan.
         </div>
-
     </div>
 </div>
 
@@ -255,9 +252,9 @@ tbody tr:hover{ background:#f8fafc; }
 
 <div class="title">Hotel Rate Dashboard</div>
 
-<!-- CITY FILTERS -->
+<!-- CITY FILTERS (ONE LINE) -->
 <div class="city-filters">
-    <div class="city all active" onclick="setCity('all', this)">All Cities</div>
+    <div class="city all active" onclick="setCity('all', this)">All</div>
     <div class="city istanbul" onclick="setCity('Istanbul', this)">Istanbul</div>
     <div class="city baku" onclick="setCity('Baku', this)">Baku</div>
     <div class="city moscow" onclick="setCity('Moscow', this)">Moscow</div>
@@ -267,7 +264,7 @@ tbody tr:hover{ background:#f8fafc; }
 <!-- CONTROLS -->
 <div class="controls">
     <input id="search" placeholder="Search hotel...">
-    <button onclick="sortPrice()">Sort Price</button>
+    <button onclick="sortPrice()">Sort</button>
 </div>
 
 <!-- TABLE -->
@@ -277,7 +274,7 @@ tbody tr:hover{ background:#f8fafc; }
 <thead>
 <tr>
 <th>City</th>
-<th>Hotel Name</th>
+<th>Hotel</th>
 <th>Stars</th>
 <th>Rate</th>
 </tr>
@@ -291,15 +288,13 @@ tbody tr:hover{ background:#f8fafc; }
 
 <!-- FOOTER -->
 <div class="footer">
-
     <div class="footer-inner">
 
         <div>
             <h4>Contact</h4>
-            <div>+989102198262</div>
-            <div>+76554324674</div>
-
-            <div class="icons">
+            +989102198262<br>
+            +76554324674
+            <div class="icon-row">
                 <div class="icon">W</div>
                 <div class="icon">T</div>
                 <div class="icon">X</div>
@@ -308,22 +303,20 @@ tbody tr:hover{ background:#f8fafc; }
 
         <div>
             <h4>Address</h4>
-            <div>Moscow, near Red Square</div>
-            <div>First street, alley 1</div>
+            Moscow<br>
+            Near Red Square
         </div>
 
         <div>
-            <h4>Ownership</h4>
-            <div>Developed & Owned by</div>
-            <div><b>Peyman Pasbani</b></div>
+            <h4>Owner</h4>
+            Peyman Pasbani
         </div>
 
     </div>
 
     <div class="bottom-line">
-        © 2026 B2B Hotel Network — All rights reserved
+        © 2026 B2B Hotel Network
     </div>
-
 </div>
 
 <script>
@@ -354,61 +347,49 @@ const data = [
 {city:"Yerevan",name:"Republica Hotel",stars:4,price:120},
 ];
 
-let currentCity = "all";
-let sorted = false;
+let currentCity="all";
+let sorted=false;
 
 function render(list){
-    const tbody = document.getElementById("tbody");
-    tbody.innerHTML = "";
-
+    const tbody=document.getElementById("tbody");
+    tbody.innerHTML="";
     list.forEach(h=>{
-        tbody.innerHTML += `
+        tbody.innerHTML+=`
         <tr>
             <td class="city-col">${h.city}</td>
             <td>${h.name}</td>
             <td class="stars">${"⭐".repeat(h.stars)}</td>
             <td class="price">$${h.price}/night</td>
-        </tr>
-        `;
+        </tr>`;
     });
 }
 
-function setCity(city, el){
-    currentCity = city;
-
-    document.querySelectorAll(".city").forEach(c=>{
-        c.classList.remove("active");
-    });
-
+function setCity(city,el){
+    currentCity=city;
+    document.querySelectorAll(".city").forEach(c=>c.classList.remove("active"));
     el.classList.add("active");
     applyFilters();
 }
 
 function applyFilters(){
-    let search = document.getElementById("search").value.toLowerCase();
-
-    let filtered = data.filter(h=>{
-        return (currentCity === "all" || h.city === currentCity) &&
-               h.name.toLowerCase().includes(search);
-    });
-
+    let s=document.getElementById("search").value.toLowerCase();
+    let filtered=data.filter(h=>
+        (currentCity==="all"||h.city===currentCity)&&
+        h.name.toLowerCase().includes(s)
+    );
     render(filtered);
 }
 
 function sortPrice(){
-    let filtered = [...data].filter(h=>{
-        return currentCity === "all" || h.city === currentCity;
-    });
-
-    filtered.sort((a,b)=>
-        sorted ? a.price-b.price : b.price-a.price
+    let list=[...data].filter(h=>
+        currentCity==="all"||h.city===currentCity
     );
-
-    sorted = !sorted;
-    render(filtered);
+    list.sort((a,b)=>sorted?a.price-b.price:b.price-a.price);
+    sorted=!sorted;
+    render(list);
 }
 
-document.getElementById("search").addEventListener("input", applyFilters);
+document.getElementById("search").addEventListener("input",applyFilters);
 
 render(data);
 
