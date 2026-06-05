@@ -1,415 +1,554 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B2B Hotel Board</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>B2B Hotel Network</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Vazirmatn:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
 
 <style>
+/* =========================================================
+   TOKENS
+   ========================================================= */
+:root {
+  --bg:        #f5f7fb;
+  --white:     #ffffff;
+  --ink:       #0f172a;
+  --ink-2:     #475569;
+  --ink-3:     #94a3b8;
+  --border:    #e5e7eb;
+  --border-lt: #f1f5f9;
 
-body{
-    font-family:'Inter', sans-serif;
-    margin:0;
-    background:#f5f7fb;
-    color:#111827;
+  --ist:    #9f1239;  --ist-bg: #fff1f2;  --ist-bd: #fecdd3;
+  --bak:    #065f46;  --bak-bg: #ecfdf5;  --bak-bd: #a7f3d0;
+  --mos:    #1e40af;  --mos-bg: #eff6ff;  --mos-bd: #bfdbfe;
+  --yer:    #9a3412;  --yer-bg: #fff7ed;  --yer-bd: #fed7aa;
+
+  --blue:   #2563eb;
+  --blue-lt:#eef2ff;
+  --blue-bd:#c7d2fe;
+
+  --shadow-sm: 0 2px 8px rgba(15,23,42,.05);
+  --shadow-md: 0 6px 20px rgba(15,23,42,.07);
+  --shadow-lg: 0 8px 28px rgba(15,23,42,.09);
+
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 16px;
 }
 
-/* ===== HEADER ===== */
-.header{
-    background: linear-gradient(135deg, #f8fafc, #eef2ff);
-    padding:18px 20px;
-    border-bottom:1px solid #e5e7eb;
+/* =========================================================
+   RESET / BASE
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
-.header-inner{
-    max-width:1100px;
-    margin:auto;
+/* =========================================================
+   HEADER
+   ========================================================= */
+.header {
+  background: linear-gradient(135deg, #f8fafc, #eef2ff);
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
 }
 
-.top-bar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:10px 14px;
-    background: rgba(255,255,255,0.75);
-    border:1px solid #e5e7eb;
-    border-radius:14px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+.header-inner {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0;
 }
 
-.logo{
-    font-size:18px;
-    font-weight:700;
+/* top bar */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: rgba(255,255,255,.8);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-md);
 }
 
-.nav a{
-    color:#475569;
-    margin-left:14px;
-    text-decoration:none;
-    font-size:13px;
-    font-weight:500;
-    padding:6px 10px;
-    border-radius:8px;
+.logo {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -.01em;
 }
 
-.nav a:hover{
-    background:#e0e7ff;
-    color:#1e3a8a;
+.nav a {
+  color: var(--ink-2);
+  margin-left: 12px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: var(--r-sm);
+  transition: background .15s, color .15s;
 }
 
-.desc{
-    margin-top:10px;
-    font-size:12.5px;
-    color:#64748b;
+.nav a:hover { background: var(--blue-lt); color: #1e3a8a; }
+
+/* description */
+.desc {
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--ink-3);
 }
 
-/* ===== PERSIAN BOX ===== */
-.persian-box{
-    margin-top:14px;
-    padding:14px 16px;
-    background: linear-gradient(135deg, #ffffff, #f1f5ff);
-    border:1px solid #e5e7eb;
-    border-radius:14px;
+/* persian box */
+.persian-box {
+  margin-top: 12px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #ffffff, #f1f5ff);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
 }
 
-.persian-box p{
-    margin:0;
-    font-family:'Vazirmatn', sans-serif;
-    font-size:14px;
-    color:#0f172a;
-    line-height:1.8;
-    text-align:center;
+.persian-box p {
+  margin: 0;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.8;
+  text-align: center;
 }
 
-/* MAIN */
-.container{
-    max-width:1100px;
-    margin:18px auto;
-    padding:0 20px;
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 0 20px;
 }
 
-.title{
-    font-size:16px;
-    font-weight:600;
+/* =========================================================
+   SECTION TITLE
+   ========================================================= */
+.title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 12px;
 }
 
-/* CITY FILTERS */
-.city-filters{
-    display:flex;
-    gap:8px;
-    overflow-x:auto;
-    margin:10px 0;
+/* =========================================================
+   CITY FILTER CHIPS
+   ========================================================= */
+.city-filters {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  margin-bottom: 12px;
+  padding-bottom: 2px;
 }
 
-.city{
-    padding:8px 12px;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:12.5px;
-    white-space:nowrap;
+.city-filters::-webkit-scrollbar { height: 4px; }
+.city-filters::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+.city {
+  padding: 7px 14px;
+  border-radius: var(--r-sm);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: opacity .15s, transform .1s, border-color .15s;
+  user-select: none;
 }
 
-.city.all{ background:#eef2ff; color:#1e3a8a; }
-.city.istanbul{ background:#fff1f2; color:#9f1239; }
-.city.baku{ background:#ecfdf5; color:#065f46; }
-.city.moscow{ background:#eff6ff; color:#1e40af; }
-.city.yerevan{ background:#fff7ed; color:#9a3412; }
+.city:hover { opacity: .85; transform: translateY(-1px); }
 
-.city.active{
-    border:1px solid #111827;
+.city.all      { background: var(--blue-lt);  color: #1e3a8a; }
+.city.istanbul { background: var(--ist-bg);   color: var(--ist); }
+.city.baku     { background: var(--bak-bg);   color: var(--bak); }
+.city.moscow   { background: var(--mos-bg);   color: var(--mos); }
+.city.yerevan  { background: var(--yer-bg);   color: var(--yer); }
+
+.city.active.all      { border-color: #1e3a8a; }
+.city.active.istanbul { border-color: var(--ist); }
+.city.active.baku     { border-color: var(--bak); }
+.city.active.moscow   { border-color: var(--mos); }
+.city.active.yerevan  { border-color: var(--yer); }
+
+/* =========================================================
+   CONTROLS BAR
+   ========================================================= */
+.controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
 }
 
-/* CONTROLS */
-.controls{
-    display:flex;
-    gap:8px;
-    margin-bottom:12px;
+.search-input {
+  flex: 1;
+  height: 38px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  padding: 0 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--white);
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
 }
 
-input,button{
-    height:38px;
-    border-radius:8px;
-    border:1px solid #e5e7eb;
-    padding:0 12px;
-    font-size:13px;
+.search-input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37,99,235,.12);
 }
 
-input{ flex:1; }
-
-button{
-    background:#2563eb;
-    color:white;
-    border:none;
-    cursor:pointer;
+.sort-btn {
+  height: 38px;
+  padding: 0 18px;
+  border-radius: var(--r-sm);
+  border: none;
+  background: var(--blue);
+  color: var(--white);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background .15s, transform .1s;
 }
 
-/* ===== TABLE FIXED ===== */
-.table-wrapper{
-    background:white;
-    border-radius:14px;
-    overflow:hidden;
-    box-shadow:0 6px 18px rgba(15,23,42,0.06);
+.sort-btn:hover { background: #1d4ed8; transform: translateY(-1px); }
+.sort-btn:active { transform: translateY(0); }
+
+/* =========================================================
+   TABLE WRAPPER
+   ========================================================= */
+.table-wrapper {
+  width: 100%;
+  background: var(--white);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
 }
 
-table{
-    width:100%;
-    border-collapse:separate;
-    border-spacing:0;
-    font-size:13px;
-    font-family:'Inter', sans-serif;
+/* =========================================================
+   TABLE
+   ========================================================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
 }
 
-thead th{
-    background:#f8fafc;
-    padding:12px 14px;
-    text-align:left;
-    font-weight:600;
-    font-size:12px;
-    color:#475569;
-    border-bottom:1px solid #e5e7eb;
+/* column widths */
+thead th:nth-child(1), tbody td:nth-child(1) { width: 18%; }
+thead th:nth-child(2), tbody td:nth-child(2) { width: 42%; }
+thead th:nth-child(3), tbody td:nth-child(3) { width: 20%; }
+thead th:nth-child(4), tbody td:nth-child(4) { width: 20%; }
+
+thead th {
+  background: #f8fafc;
+  padding: 12px 16px;
+  text-align: left;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--border);
+  letter-spacing: .01em;
 }
 
-tbody td{
-    padding:12px 14px;
-    border-bottom:1px solid #f1f5f9;
-    color:#0f172a;
-    font-weight:500;
+tbody td {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border-lt);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  vertical-align: middle;
 }
 
-tbody tr:hover{
-    background:#f8fafc;
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: #f8fafc; }
+
+/* city badge (col 1) */
+tbody td:nth-child(1) { font-weight: 600; }
+
+/* hotel name (col 2) */
+tbody td:nth-child(2) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-tbody td:first-child{
-    font-weight:600;
+/* stars (col 3) */
+.stars { color: #fbbf24; font-size: 13px; letter-spacing: 1px; }
+
+/* rate badge (col 4) */
+.rate-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--blue-lt);
+  color: #1e40af;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--blue-bd);
+  white-space: nowrap;
 }
 
-tbody td:nth-child(2){
-    max-width:320px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+/* =========================================================
+   TABLE FOOTER
+   ========================================================= */
+.table-footer {
+  padding: 10px 16px;
+  background: #f8fafc;
+  border-top: 1px solid var(--border);
+  font-size: 11.5px;
+  color: var(--ink-3);
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: .03em;
 }
 
-.stars{
-    color:#fbbf24;
+/* =========================================================
+   PAGE FOOTER
+   ========================================================= */
+.footer {
+  margin-top: 36px;
+  background: linear-gradient(135deg, #f8fafc, #eef2ff);
+  border-top: 1px solid var(--border);
+  padding: 28px 20px;
 }
 
-.price{
-    font-weight:700;
+.footer-inner {
+  max-width: 1400px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
-/* ===== FOOTER ===== */
-.footer{
-    margin-top:30px;
-    background: linear-gradient(135deg, #f8fafc, #eef2ff);
-    border-top:1px solid #e5e7eb;
-    padding:26px 20px;
+.footer-card {
+  background: rgba(255,255,255,.75);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 16px 18px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink-2);
 }
 
-.footer-inner{
-    max-width:1100px;
-    margin:auto;
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:24px;
+.footer-card h4 {
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
 }
 
-.footer-inner > div{
-    background: rgba(255,255,255,0.7);
-    border:1px solid #e5e7eb;
-    border-radius:14px;
-    padding:16px;
+.bottom-line {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 11.5px;
+  color: var(--ink-3);
+  font-family: 'IBM Plex Mono', monospace;
 }
 
-.footer h4{
-    margin:0 0 10px 0;
-    font-size:13px;
-    color:#0f172a;
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 768px) {
+  .footer-inner { grid-template-columns: 1fr; }
+  .persian-box p { font-size: 13px; }
+  thead th:nth-child(2), tbody td:nth-child(2) { max-width: 140px; }
 }
-
-.bottom-line{
-    text-align:center;
-    margin-top:18px;
-    font-size:11.5px;
-    color:#94a3b8;
-}
-
-@media(max-width:768px){
-    .footer-inner{ grid-template-columns:1fr; }
-}
-
 </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
+<!-- ── HEADER ── -->
 <div class="header">
-    <div class="header-inner">
+  <div class="header-inner">
 
-        <div class="top-bar">
-            <div class="logo">B2B Hotel Network</div>
-            <div class="nav">
-                <a href="#">About</a>
-                <a href="#">Contact</a>
-            </div>
-        </div>
-
-        <div class="desc">
-            Professional B2B hotel rate dashboard
-        </div>
-
-        <div class="persian-box">
-            <p>
-                این یک داشبورد حرفه‌ای برای مدیریت و نمایش نرخ هتل‌ها به صورت B2B است که با طراحی مدرن، ساده و کاربردی برای استفاده سریع و دقیق ساخته شده است.
-            </p>
-        </div>
-
+    <div class="top-bar">
+      <div class="logo">B2B Hotel Network</div>
+      <div class="nav">
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
     </div>
+
+    <div class="desc">Professional B2B hotel rate dashboard</div>
+
+    <div class="persian-box">
+      <p>
+        این یک داشبورد حرفه‌ای برای مدیریت و نمایش نرخ هتل‌ها به صورت B2B است که با طراحی مدرن،
+        ساده و کاربردی برای استفاده سریع و دقیق ساخته شده است.
+      </p>
+    </div>
+
+  </div>
 </div>
 
-<!-- MAIN -->
+<!-- ── MAIN ── -->
 <div class="container">
 
-<div class="title">Hotel Rate Dashboard</div>
+  <div class="title">Hotel Rate Dashboard</div>
 
-<div class="city-filters">
-    <div class="city all active" onclick="setCity('all', this)">All</div>
-    <div class="city istanbul" onclick="setCity('Istanbul', this)">Istanbul</div>
-    <div class="city baku" onclick="setCity('Baku', this)">Baku</div>
-    <div class="city moscow" onclick="setCity('Moscow', this)">Moscow</div>
-    <div class="city yerevan" onclick="setCity('Yerevan', this)">Yerevan</div>
+  <!-- city filter chips -->
+  <div class="city-filters">
+    <div class="city all active"      onclick="setCity('all',this)">All</div>
+    <div class="city istanbul"        onclick="setCity('Istanbul',this)">🇹🇷 Istanbul</div>
+    <div class="city baku"            onclick="setCity('Baku',this)">🇦🇿 Baku</div>
+    <div class="city moscow"          onclick="setCity('Moscow',this)">🇷🇺 Moscow</div>
+    <div class="city yerevan"         onclick="setCity('Yerevan',this)">🇦🇲 Yerevan</div>
+  </div>
+
+  <!-- search + sort -->
+  <div class="controls">
+    <input class="search-input" id="search" placeholder="Search hotel name…" />
+    <button class="sort-btn" onclick="sortPrice()">
+      <span id="sortIcon">↑↓</span> Sort by Price
+    </button>
+  </div>
+
+  <!-- table -->
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>City</th>
+          <th>Hotel</th>
+          <th>Stars</th>
+          <th>Rate / Night</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="table-footer" id="tfoot"></div>
+  </div>
+
 </div>
 
-<div class="controls">
-    <input id="search" placeholder="Search hotel...">
-    <button onclick="sortPrice()">Sort</button>
-</div>
-
-<div class="table-wrapper">
-<table>
-<thead>
-<tr>
-<th>City</th>
-<th>Hotel</th>
-<th>Stars</th>
-<th>Rate</th>
-</tr>
-</thead>
-<tbody id="tbody"></tbody>
-</table>
-</div>
-
-</div>
-
-<!-- FOOTER -->
+<!-- ── PAGE FOOTER ── -->
 <div class="footer">
-
-    <div class="footer-inner">
-
-        <div>
-            <h4>Contact</h4>
-            +989102198262<br>
-            +76554324674
-        </div>
-
-        <div>
-            <h4>Address</h4>
-            Moscow<br>
-            Near Red Square
-        </div>
-
-        <div>
-            <h4>Owner</h4>
-            Peyman Pasbani
-        </div>
-
+  <div class="footer-inner">
+    <div class="footer-card">
+      <h4>Contact</h4>
+      +98 910 219 8262<br>
+      +7 655 432 4674
     </div>
-
-    <div class="bottom-line">
-        © 2026 B2B Hotel Network — All rights reserved
+    <div class="footer-card">
+      <h4>Address</h4>
+      Moscow<br>
+      Near Red Square
     </div>
-
+    <div class="footer-card">
+      <h4>Owner</h4>
+      Peyman Pasbani
+    </div>
+  </div>
+  <div class="bottom-line">© 2026 B2B Hotel Network — All rights reserved</div>
 </div>
 
 <script>
-
-const data = [
-{city:"Istanbul",name:"Hilton Bosphorus",stars:5,price:180},
-{city:"Istanbul",name:"Marriott Istanbul",stars:4,price:150},
-{city:"Istanbul",name:"Ramada Plaza",stars:4,price:120},
-{city:"Istanbul",name:"Swissotel",stars:5,price:220},
-{city:"Istanbul",name:"Elite World",stars:4,price:110},
-
-{city:"Baku",name:"Fairmont Baku",stars:5,price:200},
-{city:"Baku",name:"JW Marriott",stars:5,price:230},
-{city:"Baku",name:"Holiday Inn",stars:4,price:130},
-{city:"Baku",name:"Hilton Baku",stars:5,price:210},
-{city:"Baku",name:"Park Inn",stars:4,price:120},
-
-{city:"Moscow",name:"Radisson",stars:5,price:250},
-{city:"Moscow",name:"Ritz Carlton",stars:5,price:400},
-{city:"Moscow",name:"Azimut",stars:4,price:140},
-{city:"Moscow",name:"Metropol",stars:5,price:300},
-{city:"Moscow",name:"Holiday Inn",stars:4,price:160},
-
-{city:"Yerevan",name:"Grand Hotel Yerevan",stars:5,price:160},
-{city:"Yerevan",name:"Radisson Blu Yerevan",stars:5,price:190},
-{city:"Yerevan",name:"Ani Plaza Hotel",stars:4,price:110},
-{city:"Yerevan",name:"Metropol Yerevan",stars:4,price:130},
-{city:"Yerevan",name:"Republica Hotel",stars:4,price:120},
+const DATA = [
+  // Istanbul
+  { city:"Istanbul", name:"Hilton Bosphorus",         stars:5, price:180 },
+  { city:"Istanbul", name:"Marriott Istanbul",         stars:4, price:150 },
+  { city:"Istanbul", name:"Ramada Plaza",              stars:4, price:120 },
+  { city:"Istanbul", name:"Swissôtel The Bosphorus",   stars:5, price:220 },
+  { city:"Istanbul", name:"Elite World Hotel",         stars:4, price:110 },
+  // Baku
+  { city:"Baku",     name:"Fairmont Baku",             stars:5, price:200 },
+  { city:"Baku",     name:"JW Marriott Baku",          stars:5, price:230 },
+  { city:"Baku",     name:"Holiday Inn Baku",          stars:4, price:130 },
+  { city:"Baku",     name:"Hilton Baku",               stars:5, price:210 },
+  { city:"Baku",     name:"Park Inn by Radisson",      stars:4, price:120 },
+  // Moscow
+  { city:"Moscow",   name:"Radisson Royal Moscow",     stars:5, price:250 },
+  { city:"Moscow",   name:"The Ritz-Carlton Moscow",   stars:5, price:400 },
+  { city:"Moscow",   name:"Azimut Hotel",              stars:4, price:140 },
+  { city:"Moscow",   name:"Hotel Metropol",            stars:5, price:300 },
+  { city:"Moscow",   name:"Holiday Inn Moscow",        stars:4, price:160 },
+  // Yerevan
+  { city:"Yerevan",  name:"Grand Hotel Yerevan",       stars:5, price:160 },
+  { city:"Yerevan",  name:"Radisson Blu Yerevan",      stars:5, price:190 },
+  { city:"Yerevan",  name:"Ani Plaza Hotel",           stars:4, price:110 },
+  { city:"Yerevan",  name:"Metropol Yerevan",          stars:4, price:130 },
+  { city:"Yerevan",  name:"Republica Hotel",           stars:4, price:120 },
 ];
 
-let currentCity="all";
-let sorted=false;
+let currentCity = "all";
+let sortAsc     = false;
 
-function render(list){
-    const tbody=document.getElementById("tbody");
-    tbody.innerHTML="";
-    list.forEach(h=>{
-        tbody.innerHTML+=`
-        <tr>
-            <td>${h.city}</td>
-            <td>${h.name}</td>
-            <td>${"⭐".repeat(h.stars)}</td>
-            <td>$${h.price}/night</td>
-        </tr>`;
-    });
+function render(list) {
+  const tbody = document.getElementById("tbody");
+  if (!list.length) {
+    tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;padding:28px;color:var(--ink-3)">No hotels found.</td></tr>`;
+    document.getElementById("tfoot").textContent = "0 properties";
+    return;
+  }
+  tbody.innerHTML = list.map(h => `
+    <tr>
+      <td>${h.city}</td>
+      <td>${h.name}</td>
+      <td><span class="stars">${"⭐".repeat(h.stars)}</span></td>
+      <td><span class="rate-badge">$${h.price}</span></td>
+    </tr>`).join("");
+  document.getElementById("tfoot").textContent =
+    `Showing ${list.length} propert${list.length === 1 ? "y" : "ies"}`;
 }
 
-function setCity(city,el){
-    currentCity=city;
-    document.querySelectorAll(".city").forEach(c=>c.classList.remove("active"));
-    el.classList.add("active");
-    applyFilters();
+function filtered() {
+  const q = document.getElementById("search").value.toLowerCase().trim();
+  return DATA.filter(h =>
+    (currentCity === "all" || h.city === currentCity) &&
+    h.name.toLowerCase().includes(q)
+  );
 }
 
-function applyFilters(){
-    let s=document.getElementById("search").value.toLowerCase();
-    let filtered=data.filter(h=>
-        (currentCity==="all"||h.city===currentCity)&&
-        h.name.toLowerCase().includes(s)
-    );
-    render(filtered);
+function setCity(city, el) {
+  currentCity = city;
+  document.querySelectorAll(".city").forEach(c => c.classList.remove("active"));
+  el.classList.add("active");
+  sortAsc = false;
+  document.getElementById("sortIcon").textContent = "↑↓";
+  render(filtered());
 }
 
-function sortPrice(){
-    let list=[...data].filter(h=>
-        currentCity==="all"||h.city===currentCity
-    );
-    list.sort((a,b)=>sorted?a.price-b.price:b.price-a.price);
-    sorted=!sorted;
-    render(list);
+function sortPrice() {
+  sortAsc = !sortAsc;
+  document.getElementById("sortIcon").textContent = sortAsc ? "↑" : "↓";
+  const list = filtered().sort((a, b) => sortAsc ? a.price - b.price : b.price - a.price);
+  render(list);
 }
 
-document.getElementById("search").addEventListener("input",applyFilters);
+document.getElementById("search").addEventListener("input", () => {
+  sortAsc = false;
+  document.getElementById("sortIcon").textContent = "↑↓";
+  render(filtered());
+});
 
-render(data);
-
+render(filtered());
 </script>
 
 </body>
