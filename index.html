@@ -4,49 +4,43 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>B2B Hotel Network</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Vazirmatn:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
-
 <style>
-
 :root {
-  /* 2026 Minimal Light SaaS Palette */
+  /* hotels.com palette — warm red + clean whites */
+  --red-900: #7f1010;
+  --red-800: #a01515;
+  --red-700: #c01b1b;
+  --red-600: #d32323;
+  --red-500: #e53935;
+  --red-400: #ef5350;
+  --red-100: #fff0f0;
+  --red-50:  #fff8f8;
 
-  --bg: #f6f8fb;
-  --white: #ffffff;
+  --gold-500: #c8860a;
+  --gold-400: #e0a020;
+  --gold-300: #f5c842;
+  --gold-100: #fff9e6;
 
-  --primary-900: #0b1b3a;
-  --primary-800: #102a56;
-  --primary-700: #1e3a8a;
-  --primary-600: #2563eb;
-  --primary-500: #3b82f6;
-  --primary-400: #60a5fa;
-  --primary-100: #eaf2ff;
+  --ink:   #1a1a1a;
+  --ink-2: #444444;
+  --ink-3: #888888;
+  --ink-4: #bbbbbb;
 
-  --accent-500: #14b8a6;
-  --accent-400: #2dd4bf;
-  --accent-100: #e6fffb;
+  --white:     #ffffff;
+  --bg:        #f7f7f7;
+  --border:    #e4e4e4;
+  --border-lt: #f0f0f0;
 
-  --ink:   #0f172a;
-  --ink-2: #334155;
-  --ink-3: #64748b;
-  --ink-4: #94a3b8;
-
-  --border: #e6eaf0;
-  --border-lt: #f1f5f9;
-
-  --shadow-sm: 0 2px 10px rgba(15, 23, 42, .06);
-  --shadow-md: 0 8px 24px rgba(15, 23, 42, .08);
-  --shadow-lg: 0 18px 50px rgba(15, 23, 42, .10);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.06);
+  --shadow-md: 0 6px 24px rgba(0,0,0,.09);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.11);
 
   --r-xs: 6px;
   --r-sm: 10px;
   --r-md: 14px;
   --r-lg: 18px;
   --r-xl: 22px;
-
-  --grad-primary: linear-gradient(135deg, #2563eb, #60a5fa);
-  --grad-soft: linear-gradient(180deg, #ffffff, #f7faff);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -61,7 +55,7 @@ body {
 
 /* ── HEADER ── */
 .header {
-  background: linear-gradient(150deg, var(--primary-800) 0%, var(--primary-600) 55%, var(--primary-500) 100%);
+  background: linear-gradient(150deg, var(--red-800) 0%, var(--red-600) 55%, var(--red-500) 100%);
   padding: 0 24px 28px;
   position: relative;
   overflow: hidden;
@@ -72,84 +66,470 @@ body {
   position: absolute;
   width: 480px; height: 480px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(255,255,255,.07) 0%, transparent 65%);
   top: -160px; right: -80px;
   pointer-events: none;
 }
-
 .header::after {
   content: '';
   position: absolute;
   width: 320px; height: 320px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,0,0,.05) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(0,0,0,.08) 0%, transparent 65%);
   bottom: -100px; left: 5%;
   pointer-events: none;
 }
 
-/* --- همه رنگ‌های قرمز تبدیل به آبی شده --- */
-
-.logo-text span { color: rgba(255,255,255,.75); }
-
-.ctab.active .ct-name { color: var(--primary-700); }
-
-.search-input:focus {
-  border-color: var(--primary-500);
-  box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+.header-inner {
+  max-width: 1400px;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.sort-btn {
-  background: var(--grad-primary);
-  box-shadow: 0 4px 14px rgba(37,99,235,.25);
+/* top nav */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0 0;
 }
 
-.sort-btn:hover {
-  box-shadow: 0 6px 20px rgba(37,99,235,.35);
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 11px;
 }
 
-/* TABLE HIGHLIGHT */
-tbody tr:hover td {
-  background: var(--primary-100);
+.logo-mark {
+  width: 38px; height: 38px;
+  background: var(--white);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.2);
 }
 
-tbody td:nth-child(1) {
-  color: var(--primary-700);
+.logo-text {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -.02em;
 }
 
-/* STAR (now accent instead of gold) */
-.star-badge {
-  background: var(--accent-100);
-  color: var(--accent-500);
-  border: 1px solid rgba(20,184,166,.25);
+.logo-text span { color: rgba(255,255,255,.7); font-weight: 400; }
+
+.nav { display: flex; gap: 4px; }
+
+.nav a {
+  color: rgba(255,255,255,.8);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: var(--r-sm);
+  border: 1px solid transparent;
+  transition: all .15s;
 }
 
-/* RATE badge softened */
-.rate-badge {
-  background: var(--primary-100);
-  color: var(--primary-700);
-  border: 1px solid rgba(37,99,235,.15);
+.nav a:hover {
+  background: rgba(255,255,255,.15);
+  color: var(--white);
+  border-color: rgba(255,255,255,.2);
 }
 
-/* FOOTER */
-.footer {
-  background: linear-gradient(150deg, var(--primary-900), var(--primary-800));
+/* city tabs */
+.city-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
 }
 
-/* remove red remnants */
+.ctab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 8px;
+  border-radius: var(--r-md);
+  border: 1.5px solid rgba(255,255,255,.15);
+  background: rgba(255,255,255,.1);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: all .2s;
+  user-select: none;
+}
+
+.ctab:hover {
+  background: rgba(255,255,255,.18);
+  border-color: rgba(255,255,255,.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.15);
+}
+
+.ctab.active {
+  background: var(--white);
+  border-color: var(--white);
+  box-shadow: 0 6px 20px rgba(0,0,0,.2);
+}
+
+.ctab .ct-flag  { font-size: 22px; line-height: 1; }
+.ctab .ct-name  { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.9); }
+.ctab .ct-count { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,.55); }
+
+.ctab.active .ct-name  { color: var(--red-700); }
+.ctab.active .ct-count { color: var(--ink-3); }
+
+/* hero tagline */
+.hero-box {
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: var(--r-lg);
+  padding: 20px 24px 18px;
+  backdrop-filter: blur(10px);
+}
+
+.fa-tagline {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 2;
+  text-align: right;
+  direction: rtl;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  color: rgba(255,255,255,.9);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'Vazirmatn', sans-serif;
+  white-space: nowrap;
+}
+
+.chip-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold-300);
+}
+
+/* ── MAIN ── */
+.container {
+  max-width: 1400px;
+  margin: 28px auto;
+  padding: 0 24px;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .section-title::before {
-  background: var(--grad-primary);
+  content: '';
+  display: inline-block;
+  width: 4px; height: 22px;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, var(--red-600), var(--red-400));
 }
 
 .total-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-3);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3px 12px;
   box-shadow: var(--shadow-sm);
 }
 
+/* controls */
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.search-wrap {
+  flex: 1;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-4);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  height: 44px;
+  border-radius: var(--r-sm);
+  border: 1.5px solid var(--border);
+  padding: 0 14px 0 38px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--white);
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+  box-shadow: var(--shadow-sm);
+}
+
+.search-input::placeholder { color: var(--ink-4); }
+
+.search-input:focus {
+  border-color: var(--red-500);
+  box-shadow: 0 0 0 3px rgba(211,35,35,.1);
+}
+
+.sort-btn {
+  height: 44px;
+  padding: 0 22px;
+  border-radius: var(--r-sm);
+  border: none;
+  background: linear-gradient(135deg, var(--red-700), var(--red-500));
+  color: var(--white);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(211,35,35,.35);
+  transition: all .2s;
+  letter-spacing: -.01em;
+}
+
+.sort-btn:hover {
+  background: linear-gradient(135deg, var(--red-800), var(--red-600));
+  box-shadow: 0 6px 20px rgba(211,35,35,.45);
+  transform: translateY(-1px);
+}
+
+.sort-btn:active { transform: translateY(0); }
+
+/* ── TABLE ── */
+.table-wrapper {
+  background: var(--white);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+}
+
+thead th:nth-child(1), tbody td:nth-child(1) { width: 13%; }
+thead th:nth-child(2), tbody td:nth-child(2) { width: 49%; }
+thead th:nth-child(3), tbody td:nth-child(3) { width: 16%; }
+thead th:nth-child(4), tbody td:nth-child(4) { width: 22%; }
+
+thead tr { background: #fafafa; }
+
+thead th {
+  padding: 13px 18px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-3);
+  border-bottom: 1.5px solid var(--border);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+tbody td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-lt);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  vertical-align: middle;
+  transition: background .1s;
+}
+
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: var(--red-50); }
+
+tbody td:nth-child(1) {
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--red-700);
+}
+
+tbody td:nth-child(2) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 0;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* STAR BADGE */
+.star-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--r-xs);
+  background: var(--gold-100);
+  color: var(--gold-500);
+  border: 1px solid #f0d080;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: .03em;
+}
+
+.star-badge .s-icon { font-size: 10px; }
+
+/* RATE BADGE */
+.rate-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  border-radius: var(--r-xs);
+  background: var(--red-100);
+  color: var(--red-700);
+  border: 1px solid #ffd0d0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: .01em;
+}
+
+/* TABLE FOOTER */
+.table-footer {
+  padding: 11px 18px;
+  background: #fafafa;
+  border-top: 1.5px solid var(--border);
+  font-size: 11px;
+  color: var(--ink-4);
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: .04em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.table-footer::before { content: '▸'; color: var(--red-400); }
+
+/* ── FOOTER ── */
+.footer {
+  margin-top: 40px;
+  background: linear-gradient(150deg, var(--red-900), var(--red-800));
+  padding: 36px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  width: 400px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.06) 0%, transparent 65%);
+  top: -80px; right: -60px;
+  pointer-events: none;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-card {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--r-md);
+  padding: 18px 20px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: rgba(255,255,255,.6);
+  transition: background .2s;
+}
+
+.footer-card:hover { background: rgba(255,255,255,.11); }
+
+.footer-card h4 {
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold-300);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.bottom-line {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 11px;
+  color: rgba(255,255,255,.28);
+  font-family: 'IBM Plex Mono', monospace;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .footer-inner { grid-template-columns: 1fr; }
+  .fa-tagline { font-size: 13px; }
+}
 </style>
 </head>
-
 <body>
-
-<!-- ===== EVERYTHING BELOW IS EXACTLY YOUR ORIGINAL CODE (UNCHANGED) ===== -->
 
 <div class="header">
   <div class="header-inner">
@@ -195,13 +575,15 @@ tbody td:nth-child(1) {
 
     <div class="hero-box">
       <span class="fa-tagline">
-        رزرو تخصصی هتل برای آژانس‌های گردشگری...
+        رزرو تخصصی هتل برای آژانس‌های گردشگری؛ با اتصال مستقیم به تأمین‌کنندگان در مسکو، استانبول، باکو و ایروان؛
+        استعلام، پیشنهاد و رزرو در کوتاه‌ترین زمان از شبکه تأمین مستقیم؛
+        با نرخ‌های همکاری، تأیید سریع و پشتیبانی اختصاصی در تمام مراحل.
       </span>
       <div class="hero-chips">
-        <span class="chip">نرخ‌های همکاری</span>
-        <span class="chip">تأیید سریع</span>
-        <span class="chip">اتصال مستقیم</span>
-        <span class="chip">پشتیبانی اختصاصی</span>
+        <span class="chip"><span class="chip-dot"></span>نرخ‌های همکاری</span>
+        <span class="chip"><span class="chip-dot"></span>تأیید سریع</span>
+        <span class="chip"><span class="chip-dot"></span>اتصال مستقیم</span>
+        <span class="chip"><span class="chip-dot"></span>پشتیبانی اختصاصی</span>
       </div>
     </div>
 
@@ -209,6 +591,7 @@ tbody td:nth-child(1) {
 </div>
 
 <div class="container">
+
   <div class="section-head">
     <div class="section-title">Hotel Rate Dashboard</div>
     <span class="total-badge" id="totalBadge">20 properties</span>
@@ -238,6 +621,7 @@ tbody td:nth-child(1) {
     </table>
     <div class="table-footer" id="tfoot"></div>
   </div>
+
 </div>
 
 <div class="footer">
@@ -257,12 +641,91 @@ tbody td:nth-child(1) {
       Peyman Pasbani
     </div>
   </div>
-  <div class="bottom-line">© 2026 B2B Hotel Network</div>
+  <div class="bottom-line">© 2026 B2B Hotel Network — All rights reserved</div>
 </div>
 
 <script>
-/* YOUR JS UNCHANGED */
-</script>
+const DATA = [
+  { city:"Istanbul", name:"Hilton Bosphorus",         stars:5, price:180 },
+  { city:"Istanbul", name:"Marriott Istanbul",         stars:4, price:150 },
+  { city:"Istanbul", name:"Ramada Plaza",              stars:4, price:120 },
+  { city:"Istanbul", name:"Swissôtel The Bosphorus",   stars:5, price:220 },
+  { city:"Istanbul", name:"Elite World Hotel",         stars:4, price:110 },
+  { city:"Baku",     name:"Fairmont Baku",             stars:5, price:200 },
+  { city:"Baku",     name:"JW Marriott Baku",          stars:5, price:230 },
+  { city:"Baku",     name:"Holiday Inn Baku",          stars:4, price:130 },
+  { city:"Baku",     name:"Hilton Baku",               stars:5, price:210 },
+  { city:"Baku",     name:"Park Inn by Radisson",      stars:4, price:120 },
+  { city:"Moscow",   name:"Radisson Royal Moscow",     stars:5, price:250 },
+  { city:"Moscow",   name:"The Ritz-Carlton Moscow",   stars:5, price:400 },
+  { city:"Moscow",   name:"Azimut Hotel",              stars:4, price:140 },
+  { city:"Moscow",   name:"Hotel Metropol",            stars:5, price:300 },
+  { city:"Moscow",   name:"Holiday Inn Moscow",        stars:4, price:160 },
+  { city:"Yerevan",  name:"Grand Hotel Yerevan",       stars:5, price:160 },
+  { city:"Yerevan",  name:"Radisson Blu Yerevan",      stars:5, price:190 },
+  { city:"Yerevan",  name:"Ani Plaza Hotel",           stars:4, price:110 },
+  { city:"Yerevan",  name:"Metropol Yerevan",          stars:4, price:130 },
+  { city:"Yerevan",  name:"Republica Hotel",           stars:4, price:120 },
+];
 
+let currentCity = "all", sortAsc = false;
+
+function render(list) {
+  const tbody = document.getElementById("tbody");
+  if (!list.length) {
+    tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;padding:36px;color:var(--ink-4)">No hotels found.</td></tr>`;
+    document.getElementById("tfoot").textContent = "0 properties";
+    document.getElementById("totalBadge").textContent = "0 properties";
+    return;
+  }
+  tbody.innerHTML = list.map(h => `
+    <tr>
+      <td>${h.city}</td>
+      <td title="${h.name}">${h.name}</td>
+      <td><span class="star-badge"><span class="s-icon">★</span> ${h.stars}★</span></td>
+      <td><span class="rate-badge">$${h.price}</span></td>
+    </tr>`).join("");
+  const txt = `Showing ${list.length} propert${list.length===1?"y":"ies"}`;
+  document.getElementById("tfoot").textContent = txt;
+  document.getElementById("totalBadge").textContent = list.length + " properties";
+}
+
+function filtered() {
+  const q = document.getElementById("search").value.toLowerCase().trim();
+  return DATA.filter(h =>
+    (currentCity === "all" || h.city === currentCity) &&
+    h.name.toLowerCase().includes(q)
+  );
+}
+
+function setCity(city, el) {
+  currentCity = city;
+  document.querySelectorAll(".ctab").forEach(c => c.classList.remove("active"));
+  el.classList.add("active");
+  sortAsc = false;
+  document.getElementById("sortIcon").textContent = "↑↓";
+  render(filtered());
+}
+
+function sortPrice() {
+  sortAsc = !sortAsc;
+  document.getElementById("sortIcon").textContent = sortAsc ? "↑" : "↓";
+  render(filtered().sort((a,b) => sortAsc ? a.price-b.price : b.price-a.price));
+}
+
+document.getElementById("search").addEventListener("input", () => {
+  sortAsc = false;
+  document.getElementById("sortIcon").textContent = "↑↓";
+  render(filtered());
+});
+
+["Istanbul","Baku","Moscow","Yerevan"].forEach(c => {
+  const n = DATA.filter(h => h.city===c).length;
+  const el = document.getElementById("cnt-"+c);
+  if (el) el.textContent = n + " hotel" + (n!==1?"s":"");
+});
+document.getElementById("cnt-all").textContent = DATA.length + " hotels";
+render(filtered());
+</script>
 </body>
 </html>
