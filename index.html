@@ -7,100 +7,145 @@
 
 <style>
 body{
-    font-family: Arial;
-    background:#f4f6f9;
+    font-family: Arial, sans-serif;
+    background:#f5f6fa;
     margin:0;
     padding:0;
+    color:#111827;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 .header{
-    background:#0f172a;
+    background:#0b1220;
     color:white;
-    padding:20px;
+    padding:16px 20px;
 }
 
-.header-top{
+.header-inner{
+    max-width:1100px;
+    margin:auto;
+}
+
+.top-bar{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    flex-wrap:wrap;
 }
 
 .logo{
-    font-size:20px;
-    font-weight:bold;
+    font-size:18px;
+    font-weight:600;
+    letter-spacing:0.5px;
 }
 
 .nav a{
-    color:white;
-    margin-left:15px;
+    color:#cbd5e1;
+    margin-left:14px;
     text-decoration:none;
-    font-size:14px;
-    opacity:0.9;
+    font-size:13px;
 }
 
 .nav a:hover{
-    opacity:1;
+    color:white;
 }
 
 .desc{
     margin-top:10px;
-    font-size:13px;
-    color:#cbd5e1;
-    line-height:1.6;
+    font-size:12.5px;
+    color:#94a3b8;
+    line-height:1.5;
+    max-width:900px;
 }
 
-/* BODY */
+/* ===== MAIN ===== */
 .container{
-    max-width:1000px;
-    margin:auto;
-    background:#fff;
-    padding:20px;
-    border-radius:10px;
-    margin-top:20px;
+    max-width:1100px;
+    margin:20px auto;
+    padding:0 20px;
 }
 
-h2{text-align:center;}
+.title{
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:12px;
+}
 
+/* Controls */
 .controls{
     display:flex;
     gap:10px;
-    margin-bottom:15px;
     flex-wrap:wrap;
+    margin-bottom:12px;
 }
 
 input,select,button{
-    padding:10px;
-    border:1px solid #ddd;
+    padding:9px 10px;
+    border:1px solid #e5e7eb;
     border-radius:6px;
+    font-size:13px;
+    outline:none;
+}
+
+button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+/* ===== TABLE ===== */
+.table-wrapper{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 1px 10px rgba(0,0,0,0.05);
+}
+
+.scroll{
+    max-height:520px;
+    overflow-y:auto;
 }
 
 table{
     width:100%;
     border-collapse:collapse;
+    font-size:13px;
 }
 
-th,td{
-    padding:12px;
-    border-bottom:1px solid #eee;
+thead th{
+    background:#f9fafb;
+    position:sticky;
+    top:0;
     text-align:left;
+    padding:12px;
+    border-bottom:1px solid #e5e7eb;
+    color:#374151;
+    font-weight:600;
 }
 
-th{
-    background:#f0f0f0;
-    cursor:pointer;
+tbody td{
+    padding:12px;
+    border-bottom:1px solid #f1f5f9;
 }
 
-tr:hover{background:#fafafa;}
+tbody tr:hover{
+    background:#f8fafc;
+}
 
-.stars{color:gold;}
+.city{
+    font-weight:600;
+    color:#111827;
+}
 
-.scroll{
-    max-height:500px;
-    overflow-y:auto;
-    border:1px solid #eee;
-    border-radius:8px;
+.stars{
+    color:#fbbf24;
+}
+.price{
+    font-weight:600;
 }
 </style>
 </head>
@@ -109,27 +154,31 @@ tr:hover{background:#fafafa;}
 
 <!-- HEADER -->
 <div class="header">
-    <div class="header-top">
-        <div class="logo">B2B Hotel Platform</div>
+    <div class="header-inner">
 
-        <div class="nav">
-            <a href="#">About Us</a>
-            <a href="#">Contact</a>
-            <a href="#">WhatsApp</a>
-            <a href="#">Telegram</a>
+        <div class="top-bar">
+            <div class="logo">B2B Hotel Network</div>
+
+            <div class="nav">
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">WhatsApp</a>
+                <a href="#">Telegram</a>
+            </div>
         </div>
-    </div>
 
-    <div class="desc">
-        We provide professional hotel booking services in Istanbul, Baku, and Moscow.  
-        With strong expertise in the Amadeus system and access to reliable global hotel APIs,  
-        we support travel agencies with fast and accurate B2B hotel pricing solutions.
+        <div class="desc">
+            Professional B2B hotel booking solutions in Istanbul, Baku, and Moscow.  
+            Powered by global hotel APIs and Amadeus expertise, we provide fast, accurate, and scalable pricing access for travel agencies.
+        </div>
+
     </div>
 </div>
 
 <!-- MAIN -->
 <div class="container">
-<h2>B2B Hotel Price Board</h2>
+
+<div class="title">Hotel Price Dashboard</div>
 
 <div class="controls">
     <input id="search" placeholder="Search hotel...">
@@ -141,22 +190,24 @@ tr:hover{background:#fafafa;}
         <option value="Moscow">Moscow</option>
     </select>
 
-    <button onclick="sortPrice()">Sort by Price</button>
+    <button onclick="sortPrice()">Sort Price</button>
 </div>
 
+<div class="table-wrapper">
 <div class="scroll">
 <table>
 <thead>
 <tr>
 <th>City</th>
 <th>Hotel</th>
-<th>Stars</th>
+<th>Rating</th>
 <th>Price</th>
 </tr>
 </thead>
 
 <tbody id="tbody"></tbody>
 </table>
+</div>
 </div>
 
 </div>
@@ -191,10 +242,10 @@ function render(list){
     list.forEach(h=>{
         tbody.innerHTML += `
         <tr>
-            <td>${h.city}</td>
+            <td class="city">${h.city}</td>
             <td>${h.name}</td>
             <td class="stars">${"⭐".repeat(h.stars)}</td>
-            <td>$${h.price}/night</td>
+            <td class="price">$${h.price}/night</td>
         </tr>
         `;
     });
