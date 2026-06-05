@@ -55,15 +55,17 @@ body {
    HEADER
    ========================================================= */
 .header {
-  background: linear-gradient(135deg, #f8fafc, #eef2ff);
-  padding: 18px 20px;
+  background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #f0f9ff 100%);
+  padding: 16px 20px 20px;
   border-bottom: 1px solid var(--border);
 }
 
 .header-inner {
   max-width: 1400px;
   margin: auto;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 /* top bar */
@@ -72,7 +74,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px 16px;
-  background: rgba(255,255,255,.8);
+  background: rgba(255,255,255,.85);
   border: 1px solid var(--border);
   border-radius: var(--r-md);
   backdrop-filter: blur(12px);
@@ -99,27 +101,67 @@ body {
 
 .nav a:hover { background: var(--blue-lt); color: #1e3a8a; }
 
-/* description */
-.desc {
-  margin-top: 10px;
-  font-size: 12.5px;
-  color: var(--ink-3);
+/* ── city grid panel ── */
+.header-cities {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
 }
+
+.hcity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 12px 8px;
+  border-radius: var(--r-md);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+  user-select: none;
+}
+
+.hcity:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+.hcity .hc-flag { font-size: 22px; line-height: 1; }
+.hcity .hc-name { font-size: 12px; font-weight: 600; letter-spacing: .01em; }
+.hcity .hc-count {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  opacity: .7;
+}
+
+.hcity.all      { background: rgba(255,255,255,.75); color: #1e3a8a; border-color: var(--blue-bd); }
+.hcity.istanbul { background: var(--ist-bg); color: var(--ist); }
+.hcity.baku     { background: var(--bak-bg); color: var(--bak); }
+.hcity.moscow   { background: var(--mos-bg); color: var(--mos); }
+.hcity.yerevan  { background: var(--yer-bg); color: var(--yer); }
+
+.hcity.active { box-shadow: 0 0 0 2px currentColor, var(--shadow-sm); }
+.hcity.active.all      { border-color: #1e3a8a; }
+.hcity.active.istanbul { border-color: var(--ist); }
+.hcity.active.baku     { border-color: var(--bak); }
+.hcity.active.moscow   { border-color: var(--mos); }
+.hcity.active.yerevan  { border-color: var(--yer); }
 
 /* persian box */
 .persian-box {
-  margin-top: 12px;
-  padding: 14px 18px;
-  background: linear-gradient(135deg, #ffffff, #f1f5ff);
+  padding: 13px 18px;
+  background: rgba(255,255,255,.7);
   border: 1px solid var(--border);
   border-radius: var(--r-md);
+  backdrop-filter: blur(8px);
 }
 
 .persian-box p {
   margin: 0;
   font-family: 'Vazirmatn', sans-serif;
-  font-size: 14px;
-  color: var(--ink);
+  font-size: 13.5px;
+  color: var(--ink-2);
   line-height: 1.8;
   text-align: center;
 }
@@ -144,45 +186,7 @@ body {
   margin-bottom: 12px;
 }
 
-/* =========================================================
-   CITY FILTER CHIPS
-   ========================================================= */
-.city-filters {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  margin-bottom: 12px;
-  padding-bottom: 2px;
-}
 
-.city-filters::-webkit-scrollbar { height: 4px; }
-.city-filters::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-
-.city {
-  padding: 7px 14px;
-  border-radius: var(--r-sm);
-  border: 1.5px solid transparent;
-  cursor: pointer;
-  font-size: 12.5px;
-  font-weight: 600;
-  white-space: nowrap;
-  transition: opacity .15s, transform .1s, border-color .15s;
-  user-select: none;
-}
-
-.city:hover { opacity: .85; transform: translateY(-1px); }
-
-.city.all      { background: var(--blue-lt);  color: #1e3a8a; }
-.city.istanbul { background: var(--ist-bg);   color: var(--ist); }
-.city.baku     { background: var(--bak-bg);   color: var(--bak); }
-.city.moscow   { background: var(--mos-bg);   color: var(--mos); }
-.city.yerevan  { background: var(--yer-bg);   color: var(--yer); }
-
-.city.active.all      { border-color: #1e3a8a; }
-.city.active.istanbul { border-color: var(--ist); }
-.city.active.baku     { border-color: var(--bak); }
-.city.active.moscow   { border-color: var(--mos); }
-.city.active.yerevan  { border-color: var(--yer); }
 
 /* =========================================================
    CONTROLS BAR
@@ -256,10 +260,10 @@ table {
 }
 
 /* column widths */
-thead th:nth-child(1), tbody td:nth-child(1) { width: 18%; }
-thead th:nth-child(2), tbody td:nth-child(2) { width: 42%; }
-thead th:nth-child(3), tbody td:nth-child(3) { width: 20%; }
-thead th:nth-child(4), tbody td:nth-child(4) { width: 20%; }
+thead th:nth-child(1), tbody td:nth-child(1) { width: 16%; }
+thead th:nth-child(2), tbody td:nth-child(2) { width: 46%; }
+thead th:nth-child(3), tbody td:nth-child(3) { width: 16%; }
+thead th:nth-child(4), tbody td:nth-child(4) { width: 22%; }
 
 thead th {
   background: #f8fafc;
@@ -297,23 +301,24 @@ tbody td:nth-child(2) {
 }
 
 /* stars (col 3) */
-.stars { color: #fbbf24; font-size: 13px; letter-spacing: 1px; }
+.stars { color: #fbbf24; font-size: 11px; letter-spacing: 0px; white-space: nowrap; }
 
 /* rate badge (col 4) */
 .rate-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 72px;
-  padding: 5px 12px;
-  border-radius: 999px;
+  width: 86px;
+  padding: 5px 0;
+  border-radius: 6px;
   background: var(--blue-lt);
   color: #1e40af;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 600;
   border: 1px solid var(--blue-bd);
   white-space: nowrap;
+  letter-spacing: .01em;
 }
 
 /* =========================================================
@@ -396,7 +401,34 @@ tbody td:nth-child(2) {
       </div>
     </div>
 
-    <div class="desc">Professional B2B hotel rate dashboard</div>
+    <!-- city grid: always visible, no scroll -->
+    <div class="header-cities" id="headerCities">
+      <div class="hcity all active" onclick="setCity('all',this)">
+        <span class="hc-flag">🌐</span>
+        <span class="hc-name">All Cities</span>
+        <span class="hc-count" id="cnt-all">20 hotels</span>
+      </div>
+      <div class="hcity istanbul" onclick="setCity('Istanbul',this)">
+        <span class="hc-flag">🇹🇷</span>
+        <span class="hc-name">Istanbul</span>
+        <span class="hc-count" id="cnt-Istanbul">5 hotels</span>
+      </div>
+      <div class="hcity baku" onclick="setCity('Baku',this)">
+        <span class="hc-flag">🇦🇿</span>
+        <span class="hc-name">Baku</span>
+        <span class="hc-count" id="cnt-Baku">5 hotels</span>
+      </div>
+      <div class="hcity moscow" onclick="setCity('Moscow',this)">
+        <span class="hc-flag">🇷🇺</span>
+        <span class="hc-name">Moscow</span>
+        <span class="hc-count" id="cnt-Moscow">5 hotels</span>
+      </div>
+      <div class="hcity yerevan" onclick="setCity('Yerevan',this)">
+        <span class="hc-flag">🇦🇲</span>
+        <span class="hc-name">Yerevan</span>
+        <span class="hc-count" id="cnt-Yerevan">5 hotels</span>
+      </div>
+    </div>
 
     <div class="persian-box">
       <p>
@@ -413,14 +445,6 @@ tbody td:nth-child(2) {
 
   <div class="title">Hotel Rate Dashboard</div>
 
-  <!-- city filter chips -->
-  <div class="city-filters">
-    <div class="city all active"      onclick="setCity('all',this)">All</div>
-    <div class="city istanbul"        onclick="setCity('Istanbul',this)">🇹🇷 Istanbul</div>
-    <div class="city baku"            onclick="setCity('Baku',this)">🇦🇿 Baku</div>
-    <div class="city moscow"          onclick="setCity('Moscow',this)">🇷🇺 Moscow</div>
-    <div class="city yerevan"         onclick="setCity('Yerevan',this)">🇦🇲 Yerevan</div>
-  </div>
 
   <!-- search + sort -->
   <div class="controls">
@@ -528,7 +552,7 @@ function filtered() {
 
 function setCity(city, el) {
   currentCity = city;
-  document.querySelectorAll(".city").forEach(c => c.classList.remove("active"));
+  document.querySelectorAll(".hcity").forEach(c => c.classList.remove("active"));
   el.classList.add("active");
   sortAsc = false;
   document.getElementById("sortIcon").textContent = "↑↓";
@@ -547,6 +571,14 @@ document.getElementById("search").addEventListener("input", () => {
   document.getElementById("sortIcon").textContent = "↑↓";
   render(filtered());
 });
+
+// init city counts
+["Istanbul","Baku","Moscow","Yerevan"].forEach(c => {
+  const n = DATA.filter(h => h.city === c).length;
+  const el = document.getElementById("cnt-"+c);
+  if (el) el.textContent = n + " hotel" + (n!==1?"s":"");
+});
+document.getElementById("cnt-all").textContent = DATA.length + " hotels";
 
 render(filtered());
 </script>
