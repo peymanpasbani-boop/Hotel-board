@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پِدیا — رفیق دوران</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #1C1523;
+  --plum:   #2E1F3A;
+  --rose:   #C8708A;
+  --rose-l: #E8AABB;
+  --rose-d: #A0506A;
+  --blush:  #F2DCE4;
+  --lilac:  #D4C5E0;
+  --lilac-d:#9B84B8;
+  --cream:  #FAF6F8;
+  --white:  #FFFFFF;
+  --mist:   #EDE6EE;
+  --slate:  #7A6B85;
+  --f: 'Vazirmatn', sans-serif;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--cream);
+  color: var(--plum);
+  font-family: var(--f);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  background: rgba(250,246,248,0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--mist);
+  height: 58px;
+  display: flex; align-items: center;
+  padding: 0 40px;
+  justify-content: space-between;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 9px;
+  text-decoration: none;
+}
+.nav-logo {
+  width: 32px; height: 32px;
+  background: var(--plum);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-logo svg { width:16px; height:16px; }
+.nav-name {
+  font-size: 18px; font-weight: 800;
+  color: var(--plum); letter-spacing: -.02em;
+}
+.nav-name span { color: var(--rose); }
+.nav-end { display:flex; align-items:center; gap:10px; }
+.nav-link {
+  font-size: 12px; font-weight: 500; color: var(--slate);
+  text-decoration: none; padding: 6px 14px;
+  border-radius: 30px; transition: all .2s;
+}
+.nav-link:hover { background: var(--blush); color: var(--rose-d); }
+.nav-cta {
+  background: var(--plum); color: var(--cream);
+  font-size: 12px; font-weight: 700;
+  padding: 8px 20px; border: none;
+  border-radius: 30px; cursor: pointer;
+  font-family: var(--f); transition: all .2s;
+}
+.nav-cta:hover { background: var(--rose-d); transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  padding-top: 58px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  background: linear-gradient(160deg, var(--cream) 0%, #f0e8f0 50%, var(--cream) 100%);
+}
+
+/* Subtle background shapes */
+.hero::before {
+  content: '';
+  position: absolute; top: -100px; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(200,112,138,.1) 0%, transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: -80px; left: -80px;
+  width: 450px; height: 450px;
+  background: radial-gradient(circle, rgba(155,132,184,.1) 0%, transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+
+.hero-content {
+  position: relative; z-index: 1;
+  text-align: center;
+  padding: 60px 24px 40px;
+  max-width: 680px;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(200,112,138,.1);
+  border: 1px solid rgba(200,112,138,.2);
+  border-radius: 30px; padding: 7px 18px;
+  font-size: 11px; font-weight: 700;
+  color: var(--rose-d); letter-spacing: .08em;
+  text-transform: uppercase; margin-bottom: 30px;
+}
+.dot-pulse {
+  width: 6px; height: 6px; background: var(--rose);
+  border-radius: 50%;
+  animation: dp 2.5s ease-in-out infinite;
+}
+@keyframes dp {
+  0%,100%{ opacity:1; transform:scale(1); }
+  50%{ opacity:.3; transform:scale(.5); }
+}
+
+.hero-h1 {
+  font-size: clamp(36px, 5.5vw, 64px);
+  font-weight: 800; line-height: 1.15;
+  color: var(--plum); letter-spacing: -.03em;
+  margin-bottom: 20px;
+}
+.hero-h1 em {
+  font-style: normal; color: var(--rose);
+  position: relative;
+}
+.hero-h1 em::after {
+  content: '';
+  position: absolute; bottom: -2px; left: 0; right: 0;
+  height: 3px; background: var(--rose-l);
+  border-radius: 2px;
+}
+
+.hero-sub {
+  font-size: 16px; font-weight: 300;
+  color: var(--slate); line-height: 2;
+  margin-bottom: 52px;
+}
+
+/* ── SCENARIO LABEL ── */
+.scenario-label {
+  font-size: 13px; font-weight: 700;
+  color: var(--plum); margin-bottom: 18px;
+  letter-spacing: .02em;
+}
+
+/* ── SCENARIO CARDS (full-width slides) ── */
+.scenarios {
+  width: 100vw;
+  position: relative; z-index: 1;
+  padding: 0 0 60px;
+}
+
+.scenario-track {
+  display: flex; gap: 16px;
+  padding: 0 40px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.scenario-track::-webkit-scrollbar { display: none; }
+
+/* ── SCENARIO CARD ── */
+.scard {
+  flex: 0 0 calc(33.333% - 12px);
+  min-width: 280px;
+  background: var(--white);
+  border: 2px solid var(--mist);
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all .3s cubic-bezier(.22,.68,0,1.2);
+  scroll-snap-align: start;
+  position: relative;
+}
+.scard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(46,31,58,.12);
+}
+.scard.active {
+  border-color: var(--rose);
+  box-shadow: 0 0 0 4px rgba(200,112,138,.12), 0 20px 50px rgba(46,31,58,.15);
+}
+
+/* Accent top band */
+.scard-band {
+  height: 5px;
+  background: var(--mist);
+  transition: background .3s;
+}
+.scard.active .scard-band,
+.scard:hover .scard-band { background: var(--rose); }
+
+.scard-inner { padding: 28px; }
+
+.scard-icon {
+  width: 56px; height: 56px;
+  border-radius: 18px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; margin-bottom: 18px;
+  transition: transform .3s;
+}
+.scard:hover .scard-icon,
+.scard.active .scard-icon { transform: scale(1.1) rotate(-4deg); }
+
+.scard-title {
+  font-size: 18px; font-weight: 800;
+  color: var(--plum); margin-bottom: 8px;
+  line-height: 1.3;
+}
+.scard-mood {
+  font-size: 12px; font-weight: 600;
+  color: var(--rose); margin-bottom: 12px;
+  letter-spacing: .04em;
+}
+.scard-desc {
+  font-size: 13px; font-weight: 300;
+  color: var(--slate); line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+/* Tags inside card */
+.scard-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
+.scard-tag {
+  font-size: 10px; font-weight: 700;
+  padding: 4px 10px; border-radius: 20px;
+  background: var(--blush); color: var(--rose-d);
+  letter-spacing: .05em;
+}
+
+/* Card CTA */
+.scard-cta {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 700;
+  color: var(--slate); transition: color .2s;
+}
+.scard.active .scard-cta,
+.scard:hover .scard-cta { color: var(--rose); }
+.scard-arrow {
+  width: 28px; height: 28px; border-radius: 10px;
+  background: var(--mist);
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s;
+}
+.scard.active .scard-arrow,
+.scard:hover .scard-arrow { background: var(--rose); }
+.scard-arrow svg { width: 12px; height: 12px; }
+.scard.active .scard-arrow svg path,
+.scard:hover .scard-arrow svg path { stroke: white; }
+
+/* ── EXPANDED PANEL ── */
+.expand-panel {
+  width: 100%;
+  background: var(--white);
+  border-top: 1px solid var(--mist);
+  border-bottom: 1px solid var(--mist);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .5s cubic-bezier(.22,.68,0,1.2);
+}
+.expand-panel.open { max-height: 700px; }
+
+.expand-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 48px 40px;
+}
+
+/* Empathy header */
+.expand-empathy {
+  display: flex; align-items: flex-start; gap: 20px;
+  background: var(--blush);
+  border-radius: 20px;
+  padding: 24px 28px;
+  margin-bottom: 36px;
+}
+.empathy-icon { font-size: 36px; flex-shrink: 0; }
+.empathy-text {}
+.empathy-title {
+  font-size: 16px; font-weight: 800;
+  color: var(--plum); margin-bottom: 6px;
+}
+.empathy-msg {
+  font-size: 14px; font-weight: 300;
+  color: var(--plum); line-height: 2; opacity: .8;
+}
+
+/* Products drawer */
+.products-label {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--slate); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.products-label::after {
+  content: ''; flex: 1; height: 1px;
+  background: var(--mist);
+}
+
+.products-row {
+  display: flex; gap: 14px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 8px;
+}
+.products-row::-webkit-scrollbar { display: none; }
+
+/* Product mini card */
+.pmc {
+  flex: 0 0 190px;
+  background: var(--cream);
+  border: 1.5px solid var(--mist);
+  border-radius: 18px; overflow: hidden;
+  cursor: pointer; transition: all .25s;
+}
+.pmc:hover {
+  border-color: var(--rose-l);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(200,112,138,.12);
+}
+.pmc-vis {
+  height: 110px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 42px;
+  position: relative;
+}
+.pmc-best {
+  position: absolute; top: 8px; right: 8px;
+  background: var(--rose); color: white;
+  font-size: 9px; font-weight: 800;
+  padding: 3px 8px; border-radius: 10px;
+  letter-spacing: .05em;
+}
+.pmc-body { padding: 12px 14px 14px; }
+.pmc-name {
+  font-size: 12px; font-weight: 700;
+  color: var(--plum); margin-bottom: 3px;
+  line-height: 1.4;
+}
+.pmc-brand { font-size: 10px; color: var(--slate); margin-bottom: 10px; }
+.pmc-foot { display: flex; align-items: center; justify-content: space-between; }
+.pmc-price { font-size: 14px; font-weight: 900; color: var(--plum); }
+.pmc-add {
+  width: 28px; height: 28px;
+  background: var(--plum); border: none; border-radius: 9px;
+  color: white; font-size: 18px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-family: var(--f); transition: all .15s;
+}
+.pmc-add:hover { background: var(--rose); }
+
+/* ── DOTS NAV ── */
+.scenario-dots {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; padding-top: 32px;
+}
+.sdot {
+  width: 8px; height: 8px; border-radius: 4px;
+  background: var(--mist); cursor: pointer;
+  transition: all .3s; border: none;
+}
+.sdot.active {
+  width: 24px; background: var(--rose);
+}
+
+/* ── COMPANION / CHAT SECTION ── */
+.companion {
+  background: var(--plum);
+  padding: 90px 40px;
+  position: relative; overflow: hidden;
+  text-align: center;
+}
+.companion::before {
+  content: '';
+  position: absolute; top: -60px; right: -60px;
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(200,112,138,.15) 0%, transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+.companion::after {
+  content: '';
+  position: absolute; bottom: -40px; left: -40px;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(155,132,184,.12) 0%, transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+.companion-inner {
+  max-width: 900px; margin: 0 auto;
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 420px;
+  gap: 64px; align-items: center; text-align: right;
+}
+.comp-eyebrow {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .25em; text-transform: uppercase;
+  color: var(--rose-l); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.comp-eyebrow::before {
+  content: ''; width: 20px; height: 2px;
+  background: var(--rose); border-radius: 1px;
+}
+.comp-h2 {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 800; color: white;
+  line-height: 1.2; letter-spacing: -.025em;
+  margin-bottom: 20px;
+}
+.comp-h2 em { font-style: normal; color: var(--rose-l); }
+.comp-p {
+  font-size: 14px; font-weight: 300;
+  color: rgba(250,246,248,.55);
+  line-height: 2; margin-bottom: 32px;
+}
+.comp-stats {
+  display: flex; gap: 28px;
+}
+.cstat-n {
+  font-size: 28px; font-weight: 900; color: var(--rose-l);
+  line-height: 1;
+}
+.cstat-l {
+  font-size: 11px; color: rgba(255,255,255,.4);
+  font-weight: 400; margin-top: 3px;
+}
+
+/* Chat window */
+.chat-win {
+  background: var(--white);
+  border-radius: 24px; overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,.25);
+}
+.chat-hd {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--mist);
+  display: flex; align-items: center; gap: 10px;
+}
+.chat-av {
+  width: 34px; height: 34px;
+  background: linear-gradient(135deg, var(--rose), var(--lilac-d));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+}
+.chat-info {}
+.chat-nm { font-size: 13px; font-weight: 700; color: var(--plum); }
+.chat-st {
+  font-size: 10px; color: var(--slate);
+  display: flex; align-items: center; gap: 4px;
+}
+.online-dot {
+  width: 5px; height: 5px; background: #4ade80;
+  border-radius: 50%;
+  animation: dp 2s ease-in-out infinite;
+}
+.chat-msgs {
+  padding: 16px; display: flex;
+  flex-direction: column; gap: 10px;
+  height: 220px; overflow-y: auto;
+}
+.msg { display: flex; gap: 7px; max-width: 90%; }
+.msg.me { align-self: flex-end; flex-direction: row-reverse; }
+.mav {
+  width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+}
+.mav.bot {
+  background: linear-gradient(135deg, var(--rose), var(--lilac-d));
+}
+.mav.usr { background: var(--mist); }
+.bbl {
+  padding: 9px 13px; border-radius: 14px;
+  font-size: 12px; font-weight: 400; line-height: 1.7;
+}
+.bbl.bot { background: var(--cream); color: var(--plum); border-bottom-right-radius: 4px; }
+.bbl.me { background: var(--plum); color: white; border-bottom-left-radius: 4px; }
+.chat-inp-row {
+  padding: 12px 14px;
+  border-top: 1px solid var(--mist);
+  display: flex; gap: 8px;
+}
+.cinp {
+  flex: 1; background: var(--cream);
+  border: 1px solid var(--mist); border-radius: 20px;
+  padding: 8px 14px; font-size: 12px;
+  color: var(--plum); font-family: var(--f);
+  outline: none; direction: rtl;
+}
+.cinp:focus { border-color: var(--rose); }
+.csend {
+  width: 34px; height: 34px;
+  background: var(--plum); border: none; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all .2s;
+}
+.csend:hover { background: var(--rose); }
+.csend svg { width: 14px; height: 14px; }
+
+/* ── CARE BAR ── */
+.care-bar {
+  background: var(--blush);
+  padding: 48px 40px;
+  border-top: 1px solid rgba(200,112,138,.2);
+}
+.care-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 24px;
+}
+.care-item { display: flex; align-items: flex-start; gap: 14px; }
+.care-ico {
+  width: 46px; height: 46px; flex-shrink: 0;
+  background: white; border-radius: 15px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 2px 10px rgba(200,112,138,.12);
+}
+.care-title { font-size: 14px; font-weight: 700; color: var(--plum); margin-bottom: 4px; }
+.care-desc { font-size: 12px; color: var(--rose-d); line-height: 1.7; font-weight: 300; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--plum);
+  padding: 50px 40px 28px;
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.footer-brand { font-size: 20px; font-weight: 800; color: white; }
+.footer-brand span { color: var(--rose-l); }
+.footer-links { display: flex; gap: 20px; }
+.footer-link {
+  font-size: 12px; color: rgba(255,255,255,.35);
+  text-decoration: none; transition: color .2s;
+}
+.footer-link:hover { color: var(--rose-l); }
+.footer-copy {
+  padding-top: 22px;
+  font-size: 11px; color: rgba(255,255,255,.2);
+  text-align: center;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .companion-inner { grid-template-columns: 1fr; gap: 40px; }
+  .care-inner { grid-template-columns: 1fr 1fr; }
+  .scard { flex: 0 0 82vw; }
+}
+@media(max-width:600px){
+  .care-inner { grid-template-columns: 1fr; }
+  .hero-content { padding: 40px 20px 30px; }
+  .scenario-track { padding: 0 20px; }
+  .nav { padding: 0 20px; }
+}
+
+/* ── TYPING INDICATOR ── */
+.typing {
+  display: flex; gap: 4px; align-items: center;
+  padding: 10px 13px;
+  background: var(--cream);
+  border-radius: 14px; border-bottom-right-radius: 4px;
+  width: fit-content;
+}
+.typing span {
+  width: 5px; height: 5px; background: var(--slate);
+  border-radius: 50%;
+  animation: typing 1.4s ease-in-out infinite;
+}
+.typing span:nth-child(2) { animation-delay: .2s; }
+.typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes typing {
+  0%,60%,100%{ transform:translateY(0); opacity:.4; }
+  30%{ transform:translateY(-5px); opacity:1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav">
+  <a href="#" class="nav-brand">
+    <div class="nav-logo">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="8" r="4" fill="white" opacity=".9"/>
+        <circle cx="8" cy="8" r="7" stroke="white" stroke-width="1.5" opacity=".35"/>
+      </svg>
+    </div>
+    <span class="nav-name">پِ<span>دیا</span></span>
+  </a>
+  <div class="nav-end">
+    <a href="#" class="nav-link">درباره ما</a>
+    <a href="#" class="nav-link">محصولات</a>
+    <button class="nav-cta">شروع کن</button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="dot-pulse"></span>
+      رفیق دوران پریود
+    </div>
+    <h1 class="hero-h1">
+      هر لحظه‌ات<br>
+      <em>فرق داره</em><br>
+      ما می‌دونیم
+    </h1>
+    <p class="hero-sub">
+      شب‌هایی که نگرانی، ورزش‌هایی که دوست داری، حساسیت‌هایی که مهمه —<br>
+      پدیا کنارته تا دقیقاً همون چیزی که نیاز داری رو پیدا کنی.
+    </p>
+    <p class="scenario-label">الان کدوم حالت داری؟ انتخاب کن</p>
+  </div>
+
+  <!-- ── SCENARIO CARDS ── -->
+  <div class="scenarios">
+    <div class="scenario-track" id="track">
+
+      <!-- Card 1: Night -->
+      <div class="scard" data-id="night" onclick="toggleCard(this)">
+        <div class="scard-band"></div>
+        <div class="scard-inner">
+          <div class="scard-icon" style="background:rgba(46,31,58,.07);">🌙</div>
+          <div class="scard-mood">نگرانی شب</div>
+          <h3 class="scard-title">شب آرومی بخوابم</h3>
+          <p class="scard-desc">می‌دونم که نگران خوابیدنی. اون استرس قبل از خواب که نکنه اتفاق بیفته — خیلی آشناست. ما فکر همه‌چیز رو کردیم.</p>
+          <div class="scard-tags">
+            <span class="scard-tag">پوشش ۸ ساعته</span>
+            <span class="scard-tag">ضد نشت</span>
+            <span class="scard-tag">نرم و راحت</span>
+          </div>
+          <div class="scard-cta">
+            <span>ببین چی مناسبته</span>
+            <div class="scard-arrow">
+              <svg viewBox="0 0 12 12" fill="none"><path d="M8 6H4M6 4l2 2-2 2" stroke="#9B84B8" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Sport -->
+      <div class="scard" data-id="sport" onclick="toggleCard(this)">
+        <div class="scard-band"></div>
+        <div class="scard-inner">
+          <div class="scard-icon" style="background:rgba(200,112,138,.08);">🏃‍♀️</div>
+          <div class="scard-mood">ورزش و تحرک</div>
+          <h3 class="scard-title">فعالم و می‌دوم</h3>
+          <p class="scard-desc">پریود بودن دلیل نیست که نمونی. ما با تو هستیم تو تمرین، یوگا، شنا — هرجا که جسمت دوست داره باشه.</p>
+          <div class="scard-tags">
+            <span class="scard-tag">ضد حرکت</span>
+            <span class="scard-tag">نازک و نامحسوس</span>
+            <span class="scard-tag">تهویه‌دار</span>
+          </div>
+          <div class="scard-cta">
+            <span>ببین چی مناسبته</span>
+            <div class="scard-arrow">
+              <svg viewBox="0 0 12 12" fill="none"><path d="M8 6H4M6 4l2 2-2 2" stroke="#9B84B8" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Sensitive -->
+      <div class="scard" data-id="sensitive" onclick="toggleCard(this)">
+        <div class="scard-band"></div>
+        <div class="scard-inner">
+          <div class="scard-icon" style="background:rgba(155,132,184,.1);">🌸</div>
+          <div class="scard-mood">پوست حساس</div>
+          <h3 class="scard-title">پوستم حساسه</h3>
+          <p class="scard-desc">می‌دونم که حساسیت داشتن خستگیه — هر بار باید دنبال چیزی بگردی که آزارت نده. اینجا راحت باش. ما اول از پوستت مراقبیم.</p>
+          <div class="scard-tags">
+            <span class="scard-tag">بدون عطر</span>
+            <span class="scard-tag">لایه ارگانیک</span>
+            <span class="scard-tag">تست شده</span>
+          </div>
+          <div class="scard-cta">
+            <span>ببین چی مناسبته</span>
+            <div class="scard-arrow">
+              <svg viewBox="0 0 12 12" fill="none"><path d="M8 6H4M6 4l2 2-2 2" stroke="#9B84B8" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Heavy -->
+      <div class="scard" data-id="heavy" onclick="toggleCard(this)">
+        <div class="scard-band"></div>
+        <div class="scard-inner">
+          <div class="scard-icon" style="background:rgba(160,80,106,.08);">💧</div>
+          <div class="scard-mood">جریان سنگین</div>
+          <h3 class="scard-title">روزهای سنگین دارم</h3>
+          <p class="scard-desc">اون روزهایی که همه‌چیز سنگین‌تره — از جسمت تا ذهنت. قضاوتی نیست. فقط می‌خوایم مطمئن باشیم که در امانی.</p>
+          <div class="scard-tags">
+            <span class="scard-tag">ظرفیت بالا</span>
+            <span class="scard-tag">پوشش دوجانبه</span>
+            <span class="scard-tag">جذب سریع</span>
+          </div>
+          <div class="scard-cta">
+            <span>ببین چی مناسبته</span>
+            <div class="scard-arrow">
+              <svg viewBox="0 0 12 12" fill="none"><path d="M8 6H4M6 4l2 2-2 2" stroke="#9B84B8" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: On the go -->
+      <div class="scard" data-id="onthego" onclick="toggleCard(this)">
+        <div class="scard-band"></div>
+        <div class="scard-inner">
+          <div class="scard-icon" style="background:rgba(200,112,138,.08);">✈️</div>
+          <div class="scard-mood">سفر و بیرون از خونه</div>
+          <h3 class="scard-title">همیشه در راهم</h3>
+          <p class="scard-desc">سفر، کار، دورهمی — پریود وقت نمی‌گیره. ما هم وقتت رو نمی‌گیریم. سریع، عملی، بی‌دردسر.</p>
+          <div class="scard-tags">
+            <span class="scard-tag">فشرده و قابل حمل</span>
+            <span class="scard-tag">بسته‌بندی گسسته</span>
+            <span class="scard-tag">بی‌صدا</span>
+          </div>
+          <div class="scard-cta">
+            <span>ببین چی مناسبته</span>
+            <div class="scard-arrow">
+              <svg viewBox="0 0 12 12" fill="none"><path d="M8 6H4M6 4l2 2-2 2" stroke="#9B84B8" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Dots -->
+    <div class="scenario-dots">
+      <button class="sdot active" onclick="scrollTo(0)"></button>
+      <button class="sdot" onclick="scrollTo(1)"></button>
+      <button class="sdot" onclick="scrollTo(2)"></button>
+      <button class="sdot" onclick="scrollTo(3)"></button>
+      <button class="sdot" onclick="scrollTo(4)"></button>
+    </div>
+  </div>
+
+  <!-- ── EXPAND PANEL ── -->
+  <div class="expand-panel" id="expandPanel">
+    <div class="expand-inner">
+
+      <!-- Night -->
+      <div class="expand-content" id="exp-night" style="display:none">
+        <div class="expand-empathy">
+          <div class="empathy-icon">💙</div>
+          <div class="empathy-text">
+            <div class="empathy-title">شبت آروم باشه، خوابت راحت</div>
+            <p class="empathy-msg">می‌دونم که اون نگرانی آخر شب — قبل از چشم بستن — خیلی سخته. نه فقط جسمی، بلکه ذهنی هم خسته‌ات می‌کنه. ما دقیقاً به همین فکر کردیم. اینجا محصولاتی هستن که طراحی شدن تا تو ۸ ساعت بدون هیچ نگرانی‌ای بخوابی.</p>
+          </div>
+        </div>
+        <div class="products-label">پیشنهاد ویژه برای شب</div>
+        <div class="products-row">
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#f5f0fa;">🌙<div class="pmc-best">بهترین انتخاب</div></div>
+            <div class="pmc-body">
+              <div class="pmc-name">نایت پرو ۸ ساعته</div>
+              <div class="pmc-brand">پدیا · بالشتک بلند</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۴۵,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#fdf0f4;">🩷</div>
+            <div class="pmc-body">
+              <div class="pmc-name">الترا تین شبانه</div>
+              <div class="pmc-brand">پدیا · فوق‌نازک</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۳۸,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#f0f4f8;">💜</div>
+            <div class="pmc-body">
+              <div class="pmc-name">شورت پریود شب</div>
+              <div class="pmc-brand">پدیا · پارچه</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۲۲۰,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#faf5f0;">🌙</div>
+            <div class="pmc-body">
+              <div class="pmc-name">پد جانبی شب</div>
+              <div class="pmc-brand">پدیا · محافظ جانبی</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۵۲,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sport -->
+      <div class="expand-content" id="exp-sport" style="display:none">
+        <div class="expand-empathy">
+          <div class="empathy-icon">💪</div>
+          <div class="empathy-text">
+            <div class="empathy-title">تو دوندگی رو دوست داری — پریود این رو ازت نمی‌گیره</div>
+            <p class="empathy-msg">می‌فهمم که وقتی دلت می‌خواد حرکت کنی، هیچ‌چیزی نباید جلوت رو بگیره. ما اینجاییم تا تمرینت بدون استرس باشه. این محصولات طراحی شدن برای همه نوع تحرک — از یوگا تا دویدن.</p>
+          </div>
+        </div>
+        <div class="products-label">مناسب برای ورزش و تحرک</div>
+        <div class="products-row">
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#f0faf5;">🏃‍♀️<div class="pmc-best">بهترین انتخاب</div></div>
+            <div class="pmc-body">
+              <div class="pmc-name">اسپورت اولترا</div>
+              <div class="pmc-brand">پدیا · ورزشی</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۴۸,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#fff5f0;">🧘‍♀️</div>
+            <div class="pmc-body">
+              <div class="pmc-name">یوگا پد</div>
+              <div class="pmc-brand">پدیا · انعطاف‌پذیر</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۴۲,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#f5f0ff;">🏊‍♀️</div>
+            <div class="pmc-body">
+              <div class="pmc-name">تامپون ورزشی</div>
+              <div class="pmc-brand">پدیا · برای شنا</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۳۵,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#f0f8ff;">💙</div>
+            <div class="pmc-body">
+              <div class="pmc-name">شورت اسپورت</div>
+              <div class="pmc-brand">پدیا · پارچه ورزشی</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۲۴۵,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sensitive -->
+      <div class="expand-content" id="exp-sensitive" style="display:none">
+        <div class="expand-empathy">
+          <div class="empathy-icon">🌿</div>
+          <div class="empathy-text">
+            <div class="empathy-title">پوستت لایق بهترینه — بدون هیچ ماده‌ای که ناراحتت کنه</div>
+            <p class="empathy-msg">می‌دونم که داشتن پوست حساس یعنی همیشه باید دنبال گزینه‌های مطمئن بگردی. این خستگی رو می‌فهمم. اینجا همه‌چیز تست شده، بدون عطر، بدون مواد شیمیایی مصنوعی — فقط برای آرامش پوستت.</p>
+          </div>
+        </div>
+        <div class="products-label">ملایم برای پوست حساس</div>
+        <div class="products-row">
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#f5faf5;">🌸<div class="pmc-best">بهترین انتخاب</div></div>
+            <div class="pmc-body">
+              <div class="pmc-name">ارگانیک کاتن پد</div>
+              <div class="pmc-brand">پدیا · پنبه طبیعی</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۵۸,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#fef9f0;">🍃</div>
+            <div class="pmc-body">
+              <div class="pmc-name">بامبو لایت</div>
+              <div class="pmc-brand">پدیا · فیبر بامبو</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۵۴,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#fdf5fa;">🌼</div>
+            <div class="pmc-body">
+              <div class="pmc-name">هایپوآلرژنیک پد</div>
+              <div class="pmc-brand">پدیا · فاقد عطر</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۴۹,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#f0f7f5;">✨</div>
+            <div class="pmc-body">
+              <div class="pmc-name">کاپ سیلیکونی</div>
+              <div class="pmc-brand">پدیا · بدون تماس</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۱۸۵,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Heavy -->
+      <div class="expand-content" id="exp-heavy" style="display:none">
+        <div class="expand-empathy">
+          <div class="empathy-icon">🤍</div>
+          <div class="empathy-text">
+            <div class="empathy-title">روزهای سنگین هم می‌گذرن — تو در امانی</div>
+            <p class="empathy-msg">این روزها سخته. جسمت سنگینه، حالت ممکنه خوب نباشه — و این کاملاً طبیعیه. من می‌دونم چقدر مهمه که بدونی پوشش کافی داری. این محصولات برای روزهایی طراحی شدن که نیاز به اطمینان بیشتری داری.</p>
+          </div>
+        </div>
+        <div class="products-label">پوشش قوی برای روزهای سنگین</div>
+        <div class="products-row">
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#f5f0fa;">💧<div class="pmc-best">بهترین انتخاب</div></div>
+            <div class="pmc-body">
+              <div class="pmc-name">ماکسی پلاس پرو</div>
+              <div class="pmc-brand">پدیا · ظرفیت بالا</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۶۲,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#f8f0f8;">🌊</div>
+            <div class="pmc-body">
+              <div class="pmc-name">اولترا ماکسی شب</div>
+              <div class="pmc-brand">پدیا · ترکیبی</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۵۵,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#f0f0fa;">🫶</div>
+            <div class="pmc-body">
+              <div class="pmc-name">شورت پریود هوی</div>
+              <div class="pmc-brand">پدیا · پارچه</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۲۶۰,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#fff0f5;">💜</div>
+            <div class="pmc-body">
+              <div class="pmc-name">دیسک پریود</div>
+              <div class="pmc-brand">پدیا · درونی</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۱۹۵,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- On the go -->
+      <div class="expand-content" id="exp-onthego" style="display:none">
+        <div class="expand-empathy">
+          <div class="empathy-icon">🌟</div>
+          <div class="empathy-text">
+            <div class="empathy-title">همه‌جا که بری، ما کنارتیم</div>
+            <p class="empathy-msg">زندگیت صبر نمی‌کنه — و نباید هم بکنه. می‌دونم که وقتی در راهی، آخرین چیزی که دوست داری نگران باشی، پریودته. این مجموعه طراحی شده برای راحت‌ترین حالت ممکن در سفر.</p>
+          </div>
+        </div>
+        <div class="products-label">همراه سفر و خارج از خانه</div>
+        <div class="products-row">
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#f5f8ff;">✈️<div class="pmc-best">بهترین انتخاب</div></div>
+            <div class="pmc-body">
+              <div class="pmc-name">تراول کیت</div>
+              <div class="pmc-brand">پدیا · بسته سفر</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۱۲۵,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#fff8f0;">🎒</div>
+            <div class="pmc-body">
+              <div class="pmc-name">مینی پد اینویزیبل</div>
+              <div class="pmc-brand">پدیا · فشرده</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۳۲,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#f5fff8;">🌺</div>
+            <div class="pmc-body">
+              <div class="pmc-name">کاپ سیلیکونی</div>
+              <div class="pmc-brand">پدیا · قابل استفاده مجدد</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۱۸۵,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="pmc">
+            <div class="pmc-vis" style="background:#fdf5ff;">💼</div>
+            <div class="pmc-body">
+              <div class="pmc-name">دستمال بهداشتی گسسته</div>
+              <div class="pmc-brand">پدیا · بی‌صدا</div>
+              <div class="pmc-foot">
+                <div class="pmc-price">۴۵,۰۰۰</div>
+                <button class="pmc-add" onclick="event.stopPropagation()">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ── COMPANION SECTION ── -->
+<section class="companion">
+  <div class="companion-inner">
+    <div>
+      <div class="comp-eyebrow">رفیق هوشمند</div>
+      <h2 class="comp-h2">وقتی شک داری،<br><em>پدیا کنارته</em></h2>
+      <p class="comp-p">
+        نه قضاوت، نه خجالت. فقط یه رفیق که می‌فهمه و کمک می‌کنه
+        دقیقاً همون چیزی که بهش نیاز داری رو پیدا کنی — هر ساعتی از شب و روز.
+      </p>
+      <div class="comp-stats">
+        <div>
+          <div class="cstat-n">۲۴/۷</div>
+          <div class="cstat-l">همیشه اینجام</div>
+        </div>
+        <div>
+          <div class="cstat-n">+۱۲۰۰۰</div>
+          <div class="cstat-l">دختر راضی</div>
+        </div>
+        <div>
+          <div class="cstat-n">۴.۹★</div>
+          <div class="cstat-l">امتیاز رضایت</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat window -->
+    <div class="chat-win">
+      <div class="chat-hd">
+        <div class="chat-av">🌸</div>
+        <div class="chat-info">
+          <div class="chat-nm">پدیا</div>
+          <div class="chat-st">
+            <span class="online-dot"></span>
+            آنلاین و آماده کمک
+          </div>
+        </div>
+      </div>
+      <div class="chat-msgs" id="chatMsgs">
+        <div class="msg">
+          <div class="mav bot">🌸</div>
+          <div class="bbl bot">سلام عزیزم! امروز چه حالی داری؟ می‌تونم کمکت کنم؟ 🌸</div>
+        </div>
+        <div class="msg me">
+          <div class="mav usr">👤</div>
+          <div class="bbl me">نگران شبم، می‌ترسم بخوابم</div>
+        </div>
+        <div class="msg">
+          <div class="mav bot">🌸</div>
+          <div class="bbl bot">کاملاً درک می‌کنم. این احساس خیلی آشناست. بذار چند گزینه عالی برای شب بهت نشون بدم که واقعاً آرومت کنه 💙</div>
+        </div>
+      </div>
+      <div class="chat-inp-row">
+        <input class="cinp" type="text" placeholder="بنویس چه حالی داری..." id="chatInput">
+        <button class="csend" onclick="sendMsg()">
+          <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 7H2M7 3l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CARE BAR ── -->
+<div class="care-bar">
+  <div class="care-inner">
+    <div class="care-item">
+      <div class="care-ico">🌿</div>
+      <div>
+        <div class="care-title">مواد طبیعی</div>
+        <div class="care-desc">پنبه ارگانیک بدون مواد شیمیایی مضر که پوستت رو دوست داره</div>
+      </div>
+    </div>
+    <div class="care-item">
+      <div class="care-ico">🔬</div>
+      <div>
+        <div class="care-title">تست شده توسط متخصصان</div>
+        <div class="care-desc">هر محصول توسط متخصصان زنان تأیید شده قبل از رسیدن به دستت</div>
+      </div>
+    </div>
+    <div class="care-item">
+      <div class="care-ico">🌍</div>
+      <div>
+        <div class="care-title">دوستدار محیط زیست</div>
+        <div class="care-desc">بسته‌بندی قابل بازیافت و تولید مسئولانه برای کره‌ی زمین</div>
+      </div>
+    </div>
+    <div class="care-item">
+      <div class="care-ico">💌</div>
+      <div>
+        <div class="care-title">تحویل گسسته</div>
+        <div class="care-desc">بسته‌بندی ساده و محرمانه درب منزل — بدون هیچ علامت خاصی</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">پِ<span>دیا</span></div>
+    <div class="footer-links">
+      <a href="#" class="footer-link">محصولات</a>
+      <a href="#" class="footer-link">درباره ما</a>
+      <a href="#" class="footer-link">تماس</a>
+      <a href="#" class="footer-link">حریم خصوصی</a>
+    </div>
+  </div>
+  <div class="footer-copy">© ۱۴۰۳ پدیا — ساخته شده با عشق برای همه</div>
+</footer>
+
+<script>
+let activeCard = null;
+
+function toggleCard(el) {
+  const id = el.dataset.id;
+  const panel = document.getElementById('expandPanel');
+  const allContents = document.querySelectorAll('.expand-content');
+  const allCards = document.querySelectorAll('.scard');
+
+  // If same card clicked, close
+  if (activeCard === id) {
+    panel.classList.remove('open');
+    el.classList.remove('active');
+    activeCard = null;
+    return;
+  }
+
+  // Remove active from all cards
+  allCards.forEach(c => c.classList.remove('active'));
+
+  // Hide all contents
+  allContents.forEach(c => c.style.display = 'none');
+
+  // Show selected
+  el.classList.add('active');
+  const content = document.getElementById('exp-' + id);
+  if (content) content.style.display = 'block';
+
+  panel.classList.add('open');
+  activeCard = id;
+
+  // Scroll panel into view smoothly
+  setTimeout(() => {
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 100);
+}
+
+// Dots scroll
+function scrollTo(idx) {
+  const track = document.getElementById('track');
+  const cards = track.querySelectorAll('.scard');
+  if (cards[idx]) {
+    cards[idx].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+  }
+  document.querySelectorAll('.sdot').forEach((d,i) => {
+    d.classList.toggle('active', i === idx);
+  });
+}
+
+// Track scroll to update dots
+const track = document.getElementById('track');
+track.addEventListener('scroll', () => {
+  const cards = track.querySelectorAll('.scard');
+  let closestIdx = 0;
+  let minDist = Infinity;
+  cards.forEach((c, i) => {
+    const dist = Math.abs(c.getBoundingClientRect().left - track.getBoundingClientRect().left);
+    if (dist < minDist) { minDist = dist; closestIdx = i; }
+  });
+  document.querySelectorAll('.sdot').forEach((d,i) => {
+    d.classList.toggle('active', i === closestIdx);
+  });
+});
+
+// Chat
+const replies = [
+  "خوشحالم که اینجایی 🌸 بذار با هم پیدا کنیم چی برات بهتره",
+  "می‌فهمم دقیقاً چی می‌گی. این احساس رو خیلی‌ها دارن",
+  "هیچ سوالی اشتباه نیست — بپرس، اینجام",
+  "کنارتم قدم به قدم تا بهترین گزینه رو پیدا کنیم 💙",
+  "خوشحال می‌شم بیشتر توضیح بدی تا دقیق‌تر کمک کنم 🌺",
+];
+let replyIdx = 0;
+
+function sendMsg() {
+  const inp = document.getElementById('chatInput');
+  const msgs = document.getElementById('chatMsgs');
+  const text = inp.value.trim();
+  if (!text) return;
+
+  // User message
+  const um = document.createElement('div');
+  um.className = 'msg me';
+  um.innerHTML = `<div class="mav usr">👤</div><div class="bbl me">${text}</div>`;
+  msgs.appendChild(um);
+  inp.value = '';
+  msgs.scrollTop = msgs.scrollHeight;
+
+  // Typing indicator
+  setTimeout(() => {
+    const ti = document.createElement('div');
+    ti.className = 'msg';
+    ti.id = 'typing-ind';
+    ti.innerHTML = `<div class="mav bot">🌸</div><div class="typing"><span></span><span></span><span></span></div>`;
+    msgs.appendChild(ti);
+    msgs.scrollTop = msgs.scrollHeight;
+
+    setTimeout(() => {
+      const ind = document.getElementById('typing-ind');
+      if (ind) ind.remove();
+      const bm = document.createElement('div');
+      bm.className = 'msg';
+      bm.innerHTML = `<div class="mav bot">🌸</div><div class="bbl bot">${replies[replyIdx % replies.length]}</div>`;
+      msgs.appendChild(bm);
+      replyIdx++;
+      msgs.scrollTop = msgs.scrollHeight;
+    }, 1400);
+  }, 400);
+}
+
+document.getElementById('chatInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') sendMsg();
+});
+</script>
+</body>
+</html>
