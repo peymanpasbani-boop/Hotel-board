@@ -413,6 +413,56 @@ input[type=range].fp-range::-webkit-slider-thumb { -webkit-appearance:none; widt
   background:var(--accent);
 }
 
+/* ═══════════════════════════════════════════
+   PRODUCTS SLIDER SECTION (2-row, swipeable)
+═══════════════════════════════════════════ */
+.products-slider-section {
+  padding: 70px 0 90px;
+  background: linear-gradient(180deg,#FDFCFE 0%,#F4F0F9 100%);
+  position: relative;
+  overflow: hidden;
+}
+.products-slider-section::before {
+  content:'';
+  position:absolute;
+  bottom:-80px; right:50%;
+  transform:translateX(50%);
+  width:600px; height:300px;
+  background:radial-gradient(ellipse,rgba(200,188,236,.16) 0%,transparent 70%);
+  pointer-events:none;
+}
+.ps-header { text-align:center; padding:0 24px; margin-bottom:44px; position:relative; z-index:1; }
+.ps-eyebrow { display:inline-flex; align-items:center; gap:10px; font-size:9px; font-weight:800; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; }
+.ps-eyebrow::before,.ps-eyebrow::after{content:'';width:28px;height:1px;background:var(--accent);opacity:.35;}
+.ps-h2{font-size:clamp(26px,4vw,44px);font-weight:900;color:var(--ink);letter-spacing:-.04em;line-height:1.15;margin-bottom:10px;}
+.ps-h2 em{font-style:normal;background:linear-gradient(135deg,#A892CC,#C8BCEC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ps-sub{font-size:13px;font-weight:300;color:var(--slate);line-height:1.9;max-width:380px;margin:0 auto;}
+.ps-wrap{max-width:1040px;margin:0 auto;padding:0 24px;position:relative;z-index:1;}
+.ps-track-outer{overflow:hidden;}
+.ps-track{display:flex;transition:transform .5s cubic-bezier(.77,0,.18,1);direction:rtl;}
+.ps-page{flex:0 0 100%;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:18px;}
+@media(max-width:860px){.ps-page{grid-template-columns:repeat(2,1fr);}}
+.psc{background:white;border:1.5px solid rgba(140,110,180,.09);border-radius:24px;overflow:hidden;transition:transform .25s,box-shadow .25s;cursor:pointer;}
+.psc:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(140,110,180,.15);}
+.psc-vis{height:120px;display:flex;align-items:center;justify-content:center;position:relative;}
+.psc-vis svg{width:38px;height:38px;}
+.psc-best{position:absolute;top:10px;right:10px;background:linear-gradient(135deg,#C0B0E0,#A892CC);color:white;font-size:7.5px;font-weight:800;letter-spacing:.07em;padding:4px 10px;border-radius:100px;box-shadow:0 4px 12px rgba(168,146,204,.3);}
+.psc-body{padding:16px 17px 18px;}
+.psc-name{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;line-height:1.35;}
+.psc-brand{font-size:10.5px;color:var(--slate);margin-bottom:14px;}
+.psc-foot{display:flex;align-items:center;justify-content:space-between;}
+.psc-price{font-size:14px;font-weight:900;color:var(--ink);}
+.psc-add{width:32px;height:32px;background:linear-gradient(135deg,#C0B0E0,#A892CC);border:none;border-radius:11px;color:white;font-size:19px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:var(--f);transition:opacity .18s;}
+.psc-add:hover{opacity:.72;}
+.ps-nav{display:flex;justify-content:center;gap:10px;margin-top:30px;}
+.ps-nav-btn{width:40px;height:40px;border-radius:50%;background:white;border:1.5px solid rgba(180,160,220,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;box-shadow:0 2px 12px rgba(140,110,180,.08);}
+.ps-nav-btn:hover{background:var(--lavender);border-color:rgba(139,107,174,.3);box-shadow:0 4px 18px rgba(140,110,180,.15);}
+.ps-nav-btn svg{width:14px;height:14px;}
+.ps-dots{display:flex;gap:6px;justify-content:center;margin-top:16px;}
+.psdot{width:6px;height:6px;border-radius:3px;background:rgba(139,107,174,.2);transition:all .3s;cursor:pointer;}
+.psdot.active{width:20px;background:var(--accent);}
+@media(max-width:520px){.psc-vis{height:96px;}.psc-body{padding:13px 14px 15px;}}
+
 /* ── BRAND DRAWER (bottom sheet) ── */
 .brand-drawer-overlay {
   position:fixed; inset:0; z-index:820;
@@ -709,6 +759,25 @@ footer { background:linear-gradient(135deg,#F0EAF8 0%,#EAF2F0 100%); padding:48p
       </button>
     </div>
     <div class="brands-dots" id="brandsDots"></div>
+  </div>
+</section>
+
+<!-- PRODUCTS SLIDER (2-row, swipeable) -->
+<section class="products-slider-section">
+  <div class="ps-header">
+    <div class="ps-eyebrow">پیشنهاد ویژه پدیا</div>
+    <h2 class="ps-h2">محصولات منتخب،<br><em>برای روزهای تو</em></h2>
+    <p class="ps-sub">از بین بهترین‌ها، اون‌هایی که بیشترین رضایت رو داشتن — همین الان ببین.</p>
+  </div>
+  <div class="ps-wrap">
+    <div class="ps-track-outer">
+      <div class="ps-track" id="psTrack"></div>
+    </div>
+    <div class="ps-nav">
+      <button class="ps-nav-btn" onclick="slidePs(-1)" aria-label="قبلی"><svg viewBox="0 0 14 14" fill="none"><path d="M9 11L5 7l4-4" stroke="rgba(80,60,110,.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="ps-nav-btn" onclick="slidePs(1)" aria-label="بعدی"><svg viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="rgba(80,60,110,.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+    <div class="ps-dots" id="psDots"></div>
   </div>
 </section>
 
@@ -1188,6 +1257,59 @@ function applySlide() {
 
 /* drag / swipe on carousel */
 let dragStartX = 0, isDragging = false;
+
+/* ─────────── PRODUCTS SLIDER (2-row) ─────────── */
+const psProducts = [
+  { n:'نایت پرو ۸ ساعته', b:'پنبه ارگانیک · بالشتک بلند', p:'۴۵,۰۰۰', best:true, c1:'#EDE5FF', c2:'#8B6BAE', svg:'<path d="M14 10A6 6 0 1 1 8 4a5 5 0 0 0 6 6z" fill="rgba(139,107,174,.55)"/>' },
+  { n:'اسپورت اولترا', b:'ضد حرکت · ورزشی', p:'۴۸,۰۰۰', c1:'#D4F0DF', c2:'#287850', svg:'<circle cx="10" cy="10" r="7" stroke="rgba(40,120,80,.55)" stroke-width="1.5"/><path d="M10 7v6M7 10h6" stroke="rgba(40,120,80,.55)" stroke-width="1.4" stroke-linecap="round"/>' },
+  { n:'ارگانیک کاتن پد', b:'پوست حساس · بدون عطر', p:'۵۸,۰۰۰', best:true, c1:'#FFE0EC', c2:'#A04070', svg:'<circle cx="10" cy="10" r="6" stroke="rgba(160,64,112,.55)" stroke-width="1.5"/><path d="M8 10l1.5 1.5 3-3" stroke="rgba(160,64,112,.55)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>' },
+  { n:'ماکسی پلاس پرو', b:'روزهای سنگین · ظرفیت بالا', p:'۶۲,۰۰۰', c1:'#D6E8FF', c2:'#3060B0', svg:'<path d="M10 3v13M6.5 12l3.5 4 3.5-4" stroke="rgba(48,96,176,.55)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' },
+  { n:'تراول کیت', b:'مخصوص سفر · فشرده', p:'۱۲۵,۰۰۰', best:true, c1:'#FFF0D0', c2:'#9A6820', svg:'<rect x="4" y="7" width="12" height="9" rx="2" stroke="rgba(154,104,32,.55)" stroke-width="1.4"/><path d="M7 7V6a3 3 0 0 1 6 0v1" stroke="rgba(154,104,32,.45)" stroke-width="1.2" stroke-linecap="round"/>' },
+  { n:'کاپ سیلیکونی', b:'قابل استفاده مجدد', p:'۱۸۵,۰۰۰', c1:'#FFE0EC', c2:'#A04070', svg:'<path d="M6 7h8l-2 8H8L6 7z" stroke="rgba(160,64,112,.55)" stroke-width="1.4" stroke-linejoin="round"/>' },
+  { n:'شورت پریود شب', b:'پارچه‌ای · ضدنشت', p:'۲۲۰,۰۰۰', c1:'#EDE5FF', c2:'#8B6BAE', svg:'<path d="M5 7h10l-1.5 8H6.5L5 7z" stroke="rgba(139,107,174,.55)" stroke-width="1.4" stroke-linejoin="round"/>' },
+  { n:'دیسک پریود', b:'درونی · ۱۲ ساعته', p:'۱۹۵,۰۰۰', c1:'#D6E8FF', c2:'#3060B0', svg:'<ellipse cx="10" cy="10" rx="7" ry="4" stroke="rgba(48,96,176,.55)" stroke-width="1.5"/>' },
+  { n:'یوگا پد', b:'انعطاف‌پذیر · سبک', p:'۴۲,۰۰۰', c1:'#D4F0DF', c2:'#287850', svg:'<path d="M5 10c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="rgba(40,120,80,.55)" stroke-width="1.5" stroke-linecap="round"/>' },
+  { n:'مینی پد اینویزیبل', b:'نازک و بی‌صدا', p:'۳۲,۰۰۰', c1:'#FFF0D0', c2:'#9A6820', svg:'<rect x="5" y="9" width="10" height="3" rx="1.5" fill="rgba(154,104,32,.5)"/>' },
+  { n:'بامبو لایت', b:'فیبر بامبو · ملایم', p:'۵۴,۰۰۰', c1:'#FFE0EC', c2:'#A04070', svg:'<path d="M10 16v-6M10 10c0-3 2-5 2-5s-2-1-4 0S6 8 8 10" stroke="rgba(160,64,112,.55)" stroke-width="1.4" stroke-linecap="round"/>' },
+  { n:'تامپون ورزشی', b:'برای شنا و فعالیت', p:'۳۵,۰۰۰', c1:'#D4F0DF', c2:'#287850', svg:'<path d="M10 4v12M7 13l3 3 3-3" stroke="rgba(40,120,80,.55)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' },
+];
+const PS_PER_PAGE = 8;
+let psOffset = 0;
+
+function buildPsSlider(){
+  const track=document.getElementById('psTrack'), dots=document.getElementById('psDots');
+  const pages=Math.ceil(psProducts.length/PS_PER_PAGE);
+  track.innerHTML='';
+  for(let i=0;i<pages;i++){
+    const items=psProducts.slice(i*PS_PER_PAGE,(i+1)*PS_PER_PAGE);
+    const page=document.createElement('div'); page.className='ps-page';
+    page.innerHTML=items.map(p=>`
+      <div class="psc">
+        <div class="psc-vis" style="background:${p.c1}">
+          <svg viewBox="0 0 20 20" fill="none">${p.svg}</svg>
+          ${p.best?'<div class="psc-best">پیشنهاد ویژه</div>':''}
+        </div>
+        <div class="psc-body">
+          <div class="psc-name">${p.n}</div>
+          <div class="psc-brand">${p.b}</div>
+          <div class="psc-foot"><div class="psc-price">${p.p} ت</div><button class="psc-add">+</button></div>
+        </div>
+      </div>`).join('');
+    track.appendChild(page);
+  }
+  dots.innerHTML=Array.from({length:pages},(_,i)=>`<div class="psdot${i===0?' active':''}" onclick="goPsPage(${i})"></div>`).join('');
+}
+function slidePs(dir){
+  const pages=document.querySelectorAll('.ps-page').length;
+  psOffset=Math.max(0,Math.min(psOffset+dir,pages-1));
+  applyPs();
+}
+function goPsPage(i){ psOffset=i; applyPs(); }
+function applyPs(){
+  document.getElementById('psTrack').style.transform=`translateX(${psOffset*100}%)`;
+  document.querySelectorAll('.psdot').forEach((d,i)=>d.classList.toggle('active',i===psOffset));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   buildCarousel();
   const track = document.getElementById('brandsTrack');
@@ -1202,6 +1324,24 @@ document.addEventListener('DOMContentLoaded', () => {
   track.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].clientX - dragStartX;
     if (Math.abs(dx) > 40) slideBrands(dx > 0 ? -1 : 1);
+  });
+
+  // products slider
+  buildPsSlider();
+  const psTrack = document.getElementById('psTrack');
+  let psStartX = 0;
+  psTrack.addEventListener('touchstart', e => { psStartX = e.touches[0].clientX; }, {passive:true});
+  psTrack.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - psStartX;
+    if (Math.abs(dx) > 40) slidePs(dx > 0 ? -1 : 1);
+  });
+  let psDragX = 0, psDragging = false;
+  psTrack.addEventListener('mousedown', e => { psDragging = true; psDragX = e.clientX; });
+  document.addEventListener('mouseup', e => {
+    if (!psDragging) return;
+    psDragging = false;
+    const dx = e.clientX - psDragX;
+    if (Math.abs(dx) > 40) slidePs(dx > 0 ? -1 : 1);
   });
 });
 
