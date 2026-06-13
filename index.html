@@ -60,92 +60,37 @@ body { background:#FDFCFE; color:var(--ink); font-family:var(--f); -webkit-font-
 .hero-desc { font-size:13.5px; font-weight:300; color:var(--slate); line-height:2; text-align:center; max-width:420px; margin-bottom:48px; }
 
 /* ── MOOD SELECTOR ── */
-.mood-wrap {
-  width:100%; max-width:600px;
-  position:relative; z-index:1;
-  display:flex; flex-direction:column; gap:0;
-}
-
-/* tab bar */
-.mood-tabs {
-  display:flex; gap:8px;
-  margin-bottom:16px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-.mood-tab {
-  display:flex; align-items:center; gap:7px;
-  padding:9px 16px;
-  border-radius:100px;
-  border:1.5px solid transparent;
-  background:rgba(255,255,255,.7);
-  cursor:pointer;
-  font-family:var(--f); font-size:12px; font-weight:700; color:var(--slate);
-  transition:all .25s;
-  backdrop-filter:blur(8px);
-  box-shadow:0 2px 10px rgba(140,110,180,.07);
-  white-space:nowrap;
-  user-select:none;
-}
+.mood-wrap { width:100%; max-width:600px; position:relative; z-index:1; display:flex; flex-direction:column; gap:0; }
+.mood-tabs { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; justify-content:center; }
+.mood-tab { display:flex; align-items:center; gap:7px; padding:9px 16px; border-radius:100px; border:1.5px solid transparent; background:rgba(255,255,255,.7); cursor:pointer; font-family:var(--f); font-size:12px; font-weight:700; color:var(--slate); transition:all .25s; backdrop-filter:blur(8px); box-shadow:0 2px 10px rgba(140,110,180,.07); white-space:nowrap; user-select:none; }
 .mood-tab svg { width:14px; height:14px; flex-shrink:0; }
 .mood-tab:hover { color:var(--ink); background:rgba(255,255,255,.9); box-shadow:0 4px 16px rgba(140,110,180,.13); }
-
-/* active state per mood */
 .mood-tab.active[data-mood="night"]     { background:linear-gradient(135deg,#EDE5FF,#F0EAFF); border-color:rgba(140,110,180,.35); color:#6040A0; box-shadow:0 4px 18px rgba(140,110,180,.18); }
 .mood-tab.active[data-mood="sport"]     { background:linear-gradient(135deg,#D4F0DF,#E2F7EB); border-color:rgba(60,140,90,.3); color:#287850; box-shadow:0 4px 18px rgba(60,140,90,.15); }
 .mood-tab.active[data-mood="sensitive"] { background:linear-gradient(135deg,#FFE0EC,#FFEEF6); border-color:rgba(180,80,120,.3); color:#A04070; box-shadow:0 4px 18px rgba(180,80,120,.15); }
 .mood-tab.active[data-mood="heavy"]     { background:linear-gradient(135deg,#D6E8FF,#E2EFFF); border-color:rgba(80,120,200,.3); color:#3060B0; box-shadow:0 4px 18px rgba(80,120,200,.15); }
 .mood-tab.active[data-mood="travel"]    { background:linear-gradient(135deg,#FFF0D0,#FFF7E0); border-color:rgba(160,110,40,.3); color:#9A6820; box-shadow:0 4px 18px rgba(160,110,40,.15); }
-
-/* the single panel */
-.mood-panel {
-  border-radius:28px;
-  overflow:hidden;
-  border:1.5px solid rgba(255,255,255,.85);
-  box-shadow:0 20px 60px rgba(140,110,180,.14);
-}
+.mood-panel { border-radius:28px; overflow:hidden; border:1.5px solid rgba(255,255,255,.85); box-shadow:0 20px 60px rgba(140,110,180,.14); }
 .mood-panel[data-mood="night"]     { background:linear-gradient(145deg,#EDE5FF 0%,#F5F0FF 50%,#FAF7FF 100%); }
 .mood-panel[data-mood="sport"]     { background:linear-gradient(145deg,#D4F0DF 0%,#E8F8EE 50%,#F4FCF7 100%); }
 .mood-panel[data-mood="sensitive"] { background:linear-gradient(145deg,#FFE0EC 0%,#FFEEF5 50%,#FFF5FA 100%); }
 .mood-panel[data-mood="heavy"]     { background:linear-gradient(145deg,#D6E8FF 0%,#E8F2FF 50%,#F4F8FF 100%); }
 .mood-panel[data-mood="travel"]    { background:linear-gradient(145deg,#FFF0D0 0%,#FFF8E8 50%,#FFFDF5 100%); }
-
 .mood-panel::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.7) 0%,transparent 60%); pointer-events:none; }
-
-.mood-panel-inner {
-  padding:28px;
-  display:flex; flex-direction:column; gap:16px;
-  position:relative; z-index:1;
-  animation:fadeSlide .3s ease;
-}
+.mood-panel-inner { padding:28px; display:flex; flex-direction:column; gap:16px; position:relative; z-index:1; animation:fadeSlide .3s ease; }
 @keyframes fadeSlide { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
-
-/* panel header */
 .mp-head { display:flex; align-items:center; gap:14px; }
-.mp-icon {
-  width:48px; height:48px; flex-shrink:0;
-  background:rgba(255,255,255,.75);
-  border-radius:16px;
-  display:flex; align-items:center; justify-content:center;
-  border:1px solid rgba(255,255,255,.9);
-  box-shadow:0 2px 12px rgba(140,110,180,.1);
-}
+.mp-icon { width:48px; height:48px; flex-shrink:0; background:rgba(255,255,255,.75); border-radius:16px; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,.9); box-shadow:0 2px 12px rgba(140,110,180,.1); }
 .mp-icon svg { width:22px; height:22px; }
 .mp-eyebrow { font-size:9px; font-weight:800; letter-spacing:.22em; text-transform:uppercase; color:rgba(80,60,110,.45); margin-bottom:3px; }
 .mp-title { font-size:20px; font-weight:800; color:var(--ink); letter-spacing:-.025em; }
-
-/* quote */
 .mp-quote { font-size:13px; font-weight:400; font-style:italic; color:rgba(80,60,110,.65); line-height:1.9; padding:12px 16px; background:rgba(255,255,255,.55); border-radius:14px; border:1px solid rgba(255,255,255,.8); }
-
-/* features */
 .mp-features { display:flex; flex-direction:column; gap:8px; }
 .mp-feature { display:flex; align-items:flex-start; gap:12px; padding:11px 14px; border-radius:16px; background:rgba(255,255,255,.65); border:1px solid rgba(255,255,255,.9); backdrop-filter:blur(8px); box-shadow:0 2px 8px rgba(140,110,180,.06); }
 .mp-feature-icon { flex-shrink:0; width:30px; height:30px; display:flex; align-items:center; justify-content:center; }
 .mp-feature-icon svg { width:22px; height:22px; }
 .mp-feature-title { font-size:12px; font-weight:700; color:var(--ink); margin-bottom:2px; }
 .mp-feature-desc { font-size:11px; font-weight:300; color:rgba(80,60,110,.6); line-height:1.65; }
-
-/* cta */
 .mp-cta { display:flex; align-items:center; justify-content:center; gap:8px; background:linear-gradient(135deg,#C0B0E0,#A892CC); color:white; font-family:var(--f); font-size:12px; font-weight:700; letter-spacing:.04em; padding:13px 22px; border:none; border-radius:14px; cursor:pointer; transition:opacity .2s,transform .2s; box-shadow:0 6px 20px rgba(168,146,204,.28); }
 .mp-cta:hover { opacity:.85; transform:translateY(-1px); }
 .mp-cta svg { width:12px; height:12px; }
@@ -238,6 +183,358 @@ input[type=range].fp-range::-webkit-slider-thumb { -webkit-appearance:none; widt
 .freeze-join-btn:hover { opacity:.88; transform:translateY(-2px); }
 @media(max-width:520px){ .freeze-teaser{padding:12px 18px;} .freeze-pill-price{display:none;} .freeze-calc-inner{padding:0 18px 28px;} }
 
+/* ═══════════════════════════════════════════
+   BRAND CAROUSEL SECTION
+═══════════════════════════════════════════ */
+.brands-section {
+  padding: 80px 0 90px;
+  background: linear-gradient(180deg, #F7F3FD 0%, #FDFCFE 100%);
+  position: relative;
+  overflow: hidden;
+}
+.brands-section::before {
+  content:'';
+  position:absolute;
+  top:-60px; left:50%;
+  transform:translateX(-50%);
+  width:600px; height:300px;
+  background:radial-gradient(ellipse,rgba(200,188,236,.18) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+/* header */
+.brands-header {
+  text-align: center;
+  padding: 0 24px;
+  margin-bottom: 52px;
+  position: relative;
+  z-index: 1;
+}
+.brands-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.brands-eyebrow::before,
+.brands-eyebrow::after {
+  content:'';
+  width:28px; height:1px;
+  background:var(--accent);
+  opacity:.35;
+}
+.brands-h2 {
+  font-size: clamp(26px, 4vw, 44px);
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: -.04em;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+.brands-h2 em {
+  font-style: normal;
+  background: linear-gradient(135deg, #A892CC, #C8BCEC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.brands-sub {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--slate);
+  line-height: 1.9;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* carousel track */
+.brands-carousel-wrap {
+  position: relative;
+}
+.brands-track-outer {
+  overflow: hidden;
+  padding: 20px 0 28px;
+  position: relative;
+}
+/* fade edges */
+.brands-track-outer::before,
+.brands-track-outer::after {
+  content:'';
+  position:absolute;
+  top:0; bottom:0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+.brands-track-outer::before {
+  right:0;
+  background: linear-gradient(to left, #F9F6FD 0%, transparent 100%);
+}
+.brands-track-outer::after {
+  left:0;
+  background: linear-gradient(to right, #F9F6FD 0%, transparent 100%);
+}
+.brands-track {
+  display: flex;
+  gap: 20px;
+  padding: 8px 40px;
+  transition: transform .55s cubic-bezier(.77,0,.18,1);
+  will-change: transform;
+  direction: ltr;
+}
+
+/* brand card — circle style */
+.brand-card {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform .3s;
+}
+.brand-card:hover { transform: translateY(-4px); }
+.brand-card:active { transform: scale(.96); }
+
+.brand-circle {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid rgba(180,160,220,.14);
+  box-shadow: 0 8px 32px rgba(140,110,180,.1), 0 2px 8px rgba(140,110,180,.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all .35s cubic-bezier(.34,1.56,.64,1);
+  overflow: hidden;
+}
+.brand-circle::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.9) 0%, transparent 60%);
+  pointer-events:none;
+}
+.brand-card:hover .brand-circle {
+  border-color: rgba(168,146,204,.38);
+  box-shadow: 0 16px 48px rgba(140,110,180,.18), 0 4px 16px rgba(140,110,180,.1);
+  transform: scale(1.06);
+}
+.brand-card.active .brand-circle {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(139,107,174,.18), 0 16px 48px rgba(140,110,180,.22);
+  transform: scale(1.09);
+}
+.brand-logo-inner {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.brand-logo-inner svg {
+  width: 100%;
+  height: 100%;
+}
+/* active ring pulse */
+.brand-card.active .brand-circle::after {
+  content:'';
+  position:absolute;
+  inset:-4px;
+  border-radius:50%;
+  border:2px solid rgba(139,107,174,.25);
+  animation: ringpulse 1.8s ease-out infinite;
+}
+@keyframes ringpulse {
+  0%{opacity:1;transform:scale(1);}
+  100%{opacity:0;transform:scale(1.18);}
+}
+
+.brand-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--soft);
+  letter-spacing: -.01em;
+  text-align: center;
+  transition: color .2s;
+}
+.brand-card.active .brand-name,
+.brand-card:hover .brand-name { color: var(--accent); }
+
+/* nav arrows */
+.brands-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+  position: relative;
+  z-index: 1;
+}
+.brands-nav-btn {
+  width:40px; height:40px;
+  border-radius:50%;
+  background:white;
+  border:1.5px solid rgba(180,160,220,.2);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+  transition:all .2s;
+  box-shadow: 0 2px 12px rgba(140,110,180,.08);
+}
+.brands-nav-btn:hover {
+  background:var(--lavender);
+  border-color:rgba(139,107,174,.3);
+  box-shadow:0 4px 18px rgba(140,110,180,.15);
+}
+.brands-nav-btn svg { width:14px; height:14px; }
+
+/* dots */
+.brands-dots {
+  display:flex; gap:6px; justify-content:center; margin-top:16px;
+}
+.bdot {
+  width:6px; height:6px; border-radius:3px;
+  background:rgba(139,107,174,.2);
+  transition:all .3s;
+  cursor:pointer;
+}
+.bdot.active {
+  width:20px;
+  background:var(--accent);
+}
+
+/* ── BRAND DRAWER (bottom sheet) ── */
+.brand-drawer-overlay {
+  position:fixed; inset:0; z-index:820;
+  background:rgba(80,60,120,.2);
+  backdrop-filter:blur(10px);
+  opacity:0; pointer-events:none;
+  transition:opacity .4s;
+}
+.brand-drawer-overlay.on { opacity:1; pointer-events:auto; }
+
+.brand-drawer {
+  position:fixed;
+  bottom:0; left:0; right:0;
+  z-index:830;
+  background: white;
+  border-radius: 32px 32px 0 0;
+  transform: translateY(100%);
+  transition: transform .5s cubic-bezier(.77,0,.18,1);
+  max-height: 82vh;
+  overflow-y: auto;
+  box-shadow: 0 -16px 80px rgba(100,80,140,.16);
+  border-top: 1px solid rgba(180,160,220,.18);
+}
+.brand-drawer.open { transform: translateY(0); }
+
+.bd-handle { width:36px; height:4px; background:rgba(140,110,180,.15); border-radius:2px; margin:16px auto 0; }
+
+.bd-inner { padding: 24px 28px 48px; }
+
+.bd-hero {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(140,110,180,.08);
+}
+.bd-logo-wrap {
+  width:68px; height:68px;
+  border-radius:50%;
+  background: linear-gradient(135deg, #F0EAF8, #E8E0F4);
+  border: 2px solid rgba(180,160,220,.2);
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+  box-shadow: 0 6px 20px rgba(140,110,180,.12);
+}
+.bd-logo-wrap svg { width:40px; height:40px; }
+.bd-brand-tag { font-size:8px; font-weight:800; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-bottom:4px; }
+.bd-brand-name { font-size:22px; font-weight:900; color:var(--ink); letter-spacing:-.03em; margin-bottom:4px; }
+.bd-brand-desc { font-size:12px; font-weight:300; color:var(--slate); line-height:1.75; }
+
+.bd-close {
+  position:absolute; top:20px; left:28px;
+  width:34px; height:34px;
+  background:var(--mist);
+  border:1px solid rgba(140,110,180,.12);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+  transition:background .2s;
+}
+.bd-close:hover { background:var(--lavender); }
+
+.bd-section-label {
+  font-size:8.5px; font-weight:800; letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(80,60,110,.35);
+  margin-bottom:14px;
+}
+.bd-products {
+  display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:20px;
+}
+@media(min-width:500px){ .bd-products { grid-template-columns:repeat(3,1fr); } }
+
+.bdp {
+  background: linear-gradient(145deg, #FAF8FD, white);
+  border: 1.5px solid rgba(140,110,180,.09);
+  border-radius:20px;
+  overflow:hidden;
+  transition:transform .25s, box-shadow .25s;
+  cursor:pointer;
+}
+.bdp:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(140,110,180,.12); }
+.bdp-vis {
+  height:80px;
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+}
+.bdp-vis svg { width:28px; height:28px; }
+.bdp-badge {
+  position:absolute; top:8px; right:8px;
+  font-size:7px; font-weight:800; letter-spacing:.06em;
+  padding:3px 8px; border-radius:100px;
+  background: linear-gradient(135deg,#C0B0E0,#A892CC);
+  color:white;
+}
+.bdp-body { padding:12px 14px 14px; }
+.bdp-name { font-size:11.5px; font-weight:700; color:var(--ink); margin-bottom:2px; line-height:1.3; }
+.bdp-sub { font-size:10px; color:var(--slate); margin-bottom:10px; }
+.bdp-foot { display:flex; align-items:center; justify-content:space-between; }
+.bdp-price { font-size:12.5px; font-weight:900; color:var(--ink); }
+.bdp-btn {
+  width:28px; height:28px;
+  background:linear-gradient(135deg,#C0B0E0,#A892CC);
+  border:none; border-radius:9px;
+  color:white; font-size:16px;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; font-family:var(--f);
+  transition:opacity .18s;
+}
+.bdp-btn:hover { opacity:.72; }
+
+.bd-footer {
+  margin-top:8px;
+  text-align:center;
+  font-size:11px; font-weight:300; color:var(--slate);
+  line-height:1.9;
+  padding:12px 16px;
+  background:var(--mist);
+  border-radius:14px;
+}
+.bd-footer strong { font-weight:700; color:var(--accent); }
+
 /* COMPANION */
 .companion { background:linear-gradient(160deg,#F0EAF8 0%,#E8F4F0 100%); padding:100px 32px; position:relative; overflow:hidden; border-top:1px solid rgba(180,160,220,.15); }
 .companion::before { content:''; position:absolute; top:-100px; right:-80px; width:500px; height:500px; background:radial-gradient(circle,rgba(200,188,236,.22) 0%,transparent 65%); pointer-events:none; }
@@ -297,7 +594,7 @@ footer { background:linear-gradient(135deg,#F0EAF8 0%,#EAF2F0 100%); padding:48p
 .fcopy { padding-top:22px; font-size:10px; color:var(--slate); opacity:.5; text-align:center; letter-spacing:.04em; }
 
 @media(max-width:860px){ .companion-inner{grid-template-columns:1fr;gap:44px;} .care-inner{grid-template-columns:1fr 1fr;} }
-@media(max-width:520px){ .hero-h1{font-size:36px;} .care-inner{grid-template-columns:1fr;} .companion{padding:64px 20px;} .ep-grid{grid-template-columns:1fr 1fr;} .mood-tabs{gap:6px;} .mood-tab{font-size:11px; padding:8px 12px;} }
+@media(max-width:520px){ .hero-h1{font-size:36px;} .care-inner{grid-template-columns:1fr;} .companion{padding:64px 20px;} .ep-grid{grid-template-columns:1fr 1fr;} .mood-tabs{gap:6px;} .mood-tab{font-size:11px; padding:8px 12px;} .brand-circle{width:88px;height:88px;} .brands-track{gap:14px;padding:8px 24px;} .bd-products{grid-template-columns:repeat(2,1fr);} .bd-inner{padding:20px 18px 40px;} }
 </style>
 </head>
 <body>
@@ -363,7 +660,6 @@ footer { background:linear-gradient(135deg,#F0EAF8 0%,#EAF2F0 100%); padding:48p
   <p class="hero-desc">شب‌هایی که نگرانی، ورزش‌هایی که دوست داری، حساسیت‌هایی که مهمه — پدیا کنارته.</p>
 
   <div class="mood-wrap">
-    <!-- TAB BAR -->
     <div class="mood-tabs">
       <button class="mood-tab active" data-mood="night" onclick="switchMood('night')">
         <svg viewBox="0 0 14 14" fill="none"><path d="M11 7.5A5 5 0 1 1 6 2.5a4 4 0 0 0 5 5z" fill="rgba(100,70,160,.5)"/></svg>
@@ -386,17 +682,59 @@ footer { background:linear-gradient(135deg,#F0EAF8 0%,#EAF2F0 100%); padding:48p
         همیشه در سفر
       </button>
     </div>
-
-    <!-- SINGLE PANEL -->
     <div class="mood-panel" id="moodPanel" data-mood="night">
-      <div class="mood-panel-inner" id="moodPanelInner">
-        <!-- filled by JS -->
-      </div>
+      <div class="mood-panel-inner" id="moodPanelInner"></div>
     </div>
   </div>
 </section>
 
-<!-- OVERLAY -->
+<!-- BRAND CAROUSEL -->
+<section class="brands-section">
+  <div class="brands-header">
+    <div class="brands-eyebrow">برندهای منتخب پدیا</div>
+    <h2 class="brands-h2">بهترین برندها،<br><em>فقط برای تو</em></h2>
+    <p class="brands-sub">ما همه برندهای معتبر نوار بهداشتی رو یکجا جمع کردیم — تا تو با خیال راحت انتخاب کنی.</p>
+  </div>
+
+  <div class="brands-carousel-wrap">
+    <div class="brands-track-outer">
+      <div class="brands-track" id="brandsTrack"></div>
+    </div>
+    <div class="brands-nav">
+      <button class="brands-nav-btn" onclick="slideBrands(-1)" aria-label="قبلی">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M9 11L5 7l4-4" stroke="rgba(80,60,110,.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="brands-nav-btn" onclick="slideBrands(1)" aria-label="بعدی">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="rgba(80,60,110,.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div class="brands-dots" id="brandsDots"></div>
+  </div>
+</section>
+
+<!-- BRAND DRAWER -->
+<div class="brand-drawer-overlay" id="bdOverlay" onclick="closeBrandDrawer()"></div>
+<div class="brand-drawer" id="brandDrawer">
+  <div class="bd-handle"></div>
+  <button class="bd-close" onclick="closeBrandDrawer()">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2l-8 8" stroke="rgba(80,60,110,.5)" stroke-width="1.4" stroke-linecap="round"/></svg>
+  </button>
+  <div class="bd-inner">
+    <div class="bd-hero">
+      <div class="bd-logo-wrap" id="bdLogoWrap"></div>
+      <div>
+        <div class="bd-brand-tag">برند رسمی</div>
+        <div class="bd-brand-name" id="bdBrandName"></div>
+        <div class="bd-brand-desc" id="bdBrandDesc"></div>
+      </div>
+    </div>
+    <div class="bd-section-label">محصولات این برند</div>
+    <div class="bd-products" id="bdProducts"></div>
+    <div class="bd-footer" id="bdFooter"></div>
+  </div>
+</div>
+
+<!-- OVERLAY (mood panel) -->
 <div class="expand-overlay" id="overlay" onclick="closePanel()"></div>
 <div class="expand-panel" id="expPanel">
   <div class="ep-handle"></div>
@@ -458,6 +796,7 @@ footer { background:linear-gradient(135deg,#F0EAF8 0%,#EAF2F0 100%); padding:48p
 </footer>
 
 <script>
+/* ─────────── MOOD DATA ─────────── */
 const moods = {
   night: {
     eyebrow:'آرامش شبانه', title:'شب آرومی بخوابم',
@@ -465,16 +804,14 @@ const moods = {
     icon:`<svg viewBox="0 0 20 20" fill="none"><path d="M16 10.5A7 7 0 1 1 9 3.5a5.5 5.5 0 0 0 7 7z" fill="rgba(100,70,160,.45)"/></svg>`,
     features:[
       { title:'پوشش ۸ ساعته', desc:'تا صبح بدون حتی یه بار بیدار شدن بخواب', icon:`<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="11" width="16" height="7" rx="3.5" fill="rgba(180,150,230,.2)" stroke="rgba(140,110,180,.5)" stroke-width="1.2"/><path d="M10 6.5a3.5 3.5 0 0 0 4 0 4 4 0 1 1-4 0z" fill="rgba(140,110,180,.4)"/></svg>` },
-      { title:'ضد نشت از همه طرف', desc:'بالشت و ملحفه‌ات امن هستن — اون استرس آخر شب تموم شد', icon:`<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="11" width="16" height="7" rx="3.5" fill="rgba(180,150,230,.18)" stroke="rgba(140,110,180,.45)" stroke-width="1.2"/><path d="M9 6l1.5 1.5L13 5" stroke="rgba(140,110,180,.6)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
-      { title:'نرم مثل ابر', desc:'پوستت لایق بهترین لمسه، مخصوصاً وقتی خوابی', icon:`<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="12" width="16" height="6" rx="3" fill="rgba(180,150,230,.18)" stroke="rgba(140,110,180,.45)" stroke-width="1.2"/><path d="M7 10c1-1 2-1 3 0s2 1 3 0 2-1 3 0" stroke="rgba(140,110,180,.35)" stroke-width="1" stroke-linecap="round"/></svg>` },
-      { title:'بالشتک بلند شبانه', desc:'طراحی شده برای وقتی که دراز می‌کشی', icon:`<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="rgba(140,110,180,.4)" stroke-width="1.2"/><path d="M12 8v4l2.5 2.5" stroke="rgba(140,110,180,.6)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
+      { title:'ضد نشت از همه طرف', desc:'بالشت و ملحفه‌ات امن هستن', icon:`<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="11" width="16" height="7" rx="3.5" fill="rgba(180,150,230,.18)" stroke="rgba(140,110,180,.45)" stroke-width="1.2"/><path d="M9 6l1.5 1.5L13 5" stroke="rgba(140,110,180,.6)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
     ],
     cta:'انتخاب محصول شب',
     products:[
-      { n:'نایت پرو ۸ ساعته', b:'پدیا · بالشتک بلند', p:'۴۵,۰۰۰', best:true, svg:'<path d="M14 10A6 6 0 1 1 8 4a5 5 0 0 0 6 6z" fill="rgba(140,110,180,.5)"/>' },
-      { n:'الترا تین شبانه', b:'پدیا · فوق‌نازک', p:'۳۸,۰۰۰', svg:'<rect x="5" y="9" width="10" height="3" rx="1.5" fill="rgba(140,110,180,.4)"/>' },
-      { n:'شورت پریود شب', b:'پدیا · پارچه', p:'۲۲۰,۰۰۰', svg:'<path d="M5 7h10l-1.5 8H6.5L5 7z" stroke="rgba(140,110,180,.5)" stroke-width="1.4" stroke-linejoin="round"/>' },
-      { n:'پد جانبی شب', b:'پدیا · محافظ', p:'۵۲,۰۰۰', svg:'<rect x="3" y="9" width="14" height="4" rx="2" fill="rgba(140,110,180,.38)"/>' },
+      { n:'نایت پرو ۸ ساعته', b:'بالشتک بلند', p:'۴۵,۰۰۰', best:true, svg:'<path d="M14 10A6 6 0 1 1 8 4a5 5 0 0 0 6 6z" fill="rgba(140,110,180,.5)"/>' },
+      { n:'الترا تین شبانه', b:'فوق‌نازک', p:'۳۸,۰۰۰', svg:'<rect x="5" y="9" width="10" height="3" rx="1.5" fill="rgba(140,110,180,.4)"/>' },
+      { n:'شورت پریود شب', b:'پارچه', p:'۲۲۰,۰۰۰', svg:'<path d="M5 7h10l-1.5 8H6.5L5 7z" stroke="rgba(140,110,180,.5)" stroke-width="1.4" stroke-linejoin="round"/>' },
+      { n:'پد جانبی شب', b:'محافظ', p:'۵۲,۰۰۰', svg:'<rect x="3" y="9" width="14" height="4" rx="2" fill="rgba(140,110,180,.38)"/>' },
     ],
     empathy:{ icon:'🌙', quote:'می‌دونیم اون لحظه‌ای که چراغ رو خاموش می‌کنی، یه نگرانی کوچیک توی دلته.', desc:'خواب آروم حق توئه. ما اینجاییم.' },
     footer:'💜 همه محصولات شبانه با <strong>تست ۸ ساعته</strong> تأیید شدن.',
@@ -485,15 +822,15 @@ const moods = {
     quote:'تو حق داری بدوی، بپری، شنا کنی — پریود نباید هیچ‌وقت جلوت رو بگیره.',
     icon:`<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="rgba(60,140,90,.55)" stroke-width="1.5"/><path d="M10 6.5v7M7 10h6" stroke="rgba(60,140,90,.55)" stroke-width="1.4" stroke-linecap="round"/></svg>`,
     features:[
-      { title:'ضد حرکت و جابجایی', desc:'چسبندگی قوی که حتی با شدیدترین حرکت‌ها تکون نمی‌خوره', icon:`<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="10" r="5" stroke="rgba(60,140,90,.5)" stroke-width="1.3"/><path d="M8 19c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="rgba(60,140,90,.4)" stroke-width="1.2" stroke-linecap="round"/></svg>` },
+      { title:'ضد حرکت و جابجایی', desc:'چسبندگی قوی که با شدیدترین حرکت‌ها تکون نمی‌خوره', icon:`<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="10" r="5" stroke="rgba(60,140,90,.5)" stroke-width="1.3"/><path d="M8 19c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="rgba(60,140,90,.4)" stroke-width="1.2" stroke-linecap="round"/></svg>` },
       { title:'تهویه و خنکی', desc:'حتی توی گرمای ورزش، راحت و خشک می‌مونی', icon:`<svg viewBox="0 0 24 24" fill="none"><path d="M12 4c0 0-6 3-6 8s6 8 6 8 6-3 6-8-6-8-6-8z" stroke="rgba(60,140,90,.45)" stroke-width="1.2" stroke-linejoin="round"/></svg>` },
     ],
     cta:'محصولات ورزشی',
     products:[
-      { n:'اسپورت اولترا', b:'پدیا · ورزشی', p:'۴۸,۰۰۰', best:true, svg:'<circle cx="10" cy="10" r="7" stroke="rgba(60,140,90,.5)" stroke-width="1.5"/><path d="M10 7v6M7 10h6" stroke="rgba(60,140,90,.5)" stroke-width="1.4" stroke-linecap="round"/>' },
-      { n:'یوگا پد', b:'پدیا · انعطاف‌پذیر', p:'۴۲,۰۰۰', svg:'<path d="M5 10c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="rgba(60,140,90,.5)" stroke-width="1.5" stroke-linecap="round"/>' },
-      { n:'تامپون ورزشی', b:'پدیا · برای شنا', p:'۳۵,۰۰۰', svg:'<path d="M10 4v12M7 13l3 3 3-3" stroke="rgba(60,140,90,.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' },
-      { n:'شورت اسپورت', b:'پدیا · پارچه ورزشی', p:'۲۴۵,۰۰۰', svg:'<path d="M5 6h10l-1 9H6L5 6z" stroke="rgba(60,140,90,.5)" stroke-width="1.4" stroke-linejoin="round"/>' },
+      { n:'اسپورت اولترا', b:'ورزشی', p:'۴۸,۰۰۰', best:true, svg:'<circle cx="10" cy="10" r="7" stroke="rgba(60,140,90,.5)" stroke-width="1.5"/><path d="M10 7v6M7 10h6" stroke="rgba(60,140,90,.5)" stroke-width="1.4" stroke-linecap="round"/>' },
+      { n:'یوگا پد', b:'انعطاف‌پذیر', p:'۴۲,۰۰۰', svg:'<path d="M5 10c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="rgba(60,140,90,.5)" stroke-width="1.5" stroke-linecap="round"/>' },
+      { n:'تامپون ورزشی', b:'برای شنا', p:'۳۵,۰۰۰', svg:'<path d="M10 4v12M7 13l3 3 3-3" stroke="rgba(60,140,90,.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' },
+      { n:'شورت اسپورت', b:'پارچه ورزشی', p:'۲۴۵,۰۰۰', svg:'<path d="M5 6h10l-1 9H6L5 6z" stroke="rgba(60,140,90,.5)" stroke-width="1.4" stroke-linejoin="round"/>' },
     ],
     empathy:{ icon:'🏃‍♀️', quote:'تو حق داری بدوی، بپری، شنا کنی.', desc:'ما مطمئن می‌شیم محصولت به اندازه تو قوی باشه.' },
     footer:'🌿 محصولات ورزشی با <strong>تکنولوژی ضد حرکت</strong> طراحی شدن.',
@@ -504,15 +841,15 @@ const moods = {
     quote:'می‌دونیم که پوست حساس نیاز به مراقبت ویژه داره — هیچ ماده‌ای نباید اذیتت کنه.',
     icon:`<svg viewBox="0 0 20 20" fill="none"><path d="M10 17S4 13 4 8a6 6 0 0 1 12 0c0 5-6 9-6 9z" stroke="rgba(180,80,120,.5)" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
     features:[
-      { title:'۱۰۰٪ پنبه طبیعی', desc:'بدون عطر، بدون رنگ مصنوعی — فقط طبیعت', icon:`<svg viewBox="0 0 24 24" fill="none"><path d="M12 4s-5 3.5-5 8c0 2.8 2.2 5 5 5s5-2.2 5-5c0-4.5-5-8-5-8z" fill="rgba(180,80,120,.12)" stroke="rgba(180,80,120,.45)" stroke-width="1.2" stroke-linejoin="round"/><path d="M9 13l1.5 1.5 3-3" stroke="rgba(180,80,120,.6)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
-      { title:'تست شده توسط متخصص', desc:'پوست حساست لایق اطمینانه — ما این رو جدی می‌گیریم', icon:`<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="rgba(180,80,120,.4)" stroke-width="1.2"/><path d="M9 12l2 2 4-4" stroke="rgba(180,80,120,.6)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
+      { title:'۱۰۰٪ پنبه طبیعی', desc:'بدون عطر، بدون رنگ مصنوعی — فقط طبیعت', icon:`<svg viewBox="0 0 24 24" fill="none"><path d="M12 4s-5 3.5-5 8c0 2.8 2.2 5 5 5s5-2.2 5-5c0-4.5-5-8-5-8z" fill="rgba(180,80,120,.12)" stroke="rgba(180,80,120,.45)" stroke-width="1.2" stroke-linejoin="round"/></svg>` },
+      { title:'تست شده توسط متخصص', desc:'پوست حساست لایق اطمینانه', icon:`<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="rgba(180,80,120,.4)" stroke-width="1.2"/><path d="M9 12l2 2 4-4" stroke="rgba(180,80,120,.6)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
     ],
     cta:'محصولات ملایم',
     products:[
-      { n:'ارگانیک کاتن پد', b:'پدیا · پنبه طبیعی', p:'۵۸,۰۰۰', best:true, svg:'<circle cx="10" cy="10" r="6" stroke="rgba(180,80,120,.5)" stroke-width="1.5"/><path d="M8 10l1.5 1.5 3-3" stroke="rgba(180,80,120,.5)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>' },
-      { n:'بامبو لایت', b:'پدیا · فیبر بامبو', p:'۵۴,۰۰۰', svg:'<path d="M10 16v-6M10 10c0-3 2-5 2-5s-2-1-4 0S6 8 8 10" stroke="rgba(180,80,120,.5)" stroke-width="1.4" stroke-linecap="round"/>' },
-      { n:'هایپوآلرژنیک', b:'پدیا · فاقد عطر', p:'۴۹,۰۰۰', svg:'<rect x="4" y="8" width="12" height="5" rx="2.5" fill="rgba(180,80,120,.3)"/>' },
-      { n:'کاپ سیلیکونی', b:'پدیا · بدون تماس', p:'۱۸۵,۰۰۰', svg:'<path d="M6 7h8l-2 8H8L6 7z" stroke="rgba(180,80,120,.5)" stroke-width="1.4" stroke-linejoin="round"/>' },
+      { n:'ارگانیک کاتن پد', b:'پنبه طبیعی', p:'۵۸,۰۰۰', best:true, svg:'<circle cx="10" cy="10" r="6" stroke="rgba(180,80,120,.5)" stroke-width="1.5"/><path d="M8 10l1.5 1.5 3-3" stroke="rgba(180,80,120,.5)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>' },
+      { n:'بامبو لایت', b:'فیبر بامبو', p:'۵۴,۰۰۰', svg:'<path d="M10 16v-6M10 10c0-3 2-5 2-5s-2-1-4 0S6 8 8 10" stroke="rgba(180,80,120,.5)" stroke-width="1.4" stroke-linecap="round"/>' },
+      { n:'هایپوآلرژنیک', b:'فاقد عطر', p:'۴۹,۰۰۰', svg:'<rect x="4" y="8" width="12" height="5" rx="2.5" fill="rgba(180,80,120,.3)"/>' },
+      { n:'کاپ سیلیکونی', b:'بدون تماس', p:'۱۸۵,۰۰۰', svg:'<path d="M6 7h8l-2 8H8L6 7z" stroke="rgba(180,80,120,.5)" stroke-width="1.4" stroke-linejoin="round"/>' },
     ],
     empathy:{ icon:'🌸', quote:'پوست حساس یعنی جسمت داره بهت می‌گه نیاز به مراقبت داره.', desc:'محصولات ما طراحی شدن تا پوستت فقط آرامش حس کنه.' },
     footer:'🌿 تمام محصولات حساس <strong>فاقد عطر، رنگ مصنوعی و مواد شیمیایی</strong> هستن.',
@@ -523,16 +860,15 @@ const moods = {
     quote:'اون روزایی که همه‌چیز سنگین‌تره — جسمت، حالت، همه‌چیز. ما می‌فهمیم.',
     icon:`<svg viewBox="0 0 20 20" fill="none"><path d="M10 3v11M7 11l3 3 3-3" stroke="rgba(60,100,180,.55)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16h12" stroke="rgba(60,100,180,.3)" stroke-width="1.3" stroke-linecap="round"/></svg>`,
     features:[
-      { title:'ظرفیت فوق‌العاده', desc:'هر چقدر هم سنگین باشه، یه بار هم نمی‌ذاریم نگران باشی', icon:`<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="8" rx="4" fill="rgba(100,150,230,.18)" stroke="rgba(80,120,200,.45)" stroke-width="1.2"/><path d="M12 4v6" stroke="rgba(80,120,200,.5)" stroke-width="1.3" stroke-linecap="round"/><path d="M9.5 7.5l2.5 2.5 2.5-2.5" stroke="rgba(80,120,200,.4)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
-      { title:'پوشش ۳۶۰ درجه', desc:'جلو، عقب، طرفین — بدون هیچ نقطه‌ی کوری', icon:`<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="11" width="16" height="7" rx="3.5" fill="rgba(100,150,230,.16)" stroke="rgba(80,120,200,.42)" stroke-width="1.2"/><path d="M7 9V11M12 8V11M17 9V11" stroke="rgba(80,120,200,.35)" stroke-width="1" stroke-linecap="round"/></svg>` },
-      { title:'جذب آنی', desc:'در کسری از ثانیه جذب می‌کنه — چون روزهای سنگین صبر ندارن', icon:`<svg viewBox="0 0 24 24" fill="none"><path d="M13 4l-3 5h3l-3 5" stroke="rgba(80,120,200,.55)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
+      { title:'ظرفیت فوق‌العاده', desc:'هر چقدر هم سنگین باشه، یه بار هم نمی‌ذاریم نگران باشی', icon:`<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="8" rx="4" fill="rgba(100,150,230,.18)" stroke="rgba(80,120,200,.45)" stroke-width="1.2"/></svg>` },
+      { title:'پوشش ۳۶۰ درجه', desc:'جلو، عقب، طرفین — بدون هیچ نقطه‌ی کوری', icon:`<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="11" width="16" height="7" rx="3.5" fill="rgba(100,150,230,.16)" stroke="rgba(80,120,200,.42)" stroke-width="1.2"/></svg>` },
     ],
     cta:'محصولات روزهای سنگین',
     products:[
-      { n:'ماکسی پلاس پرو', b:'پدیا · ظرفیت بالا', p:'۶۲,۰۰۰', best:true, svg:'<path d="M10 3v13M6.5 12l3.5 4 3.5-4" stroke="rgba(80,120,200,.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' },
-      { n:'اولترا ماکسی شب', b:'پدیا · ترکیبی', p:'۵۵,۰۰۰', svg:'<rect x="3" y="8" width="14" height="5" rx="2.5" fill="rgba(80,120,200,.35)"/>' },
-      { n:'شورت پریود هوی', b:'پدیا · پارچه', p:'۲۶۰,۰۰۰', svg:'<path d="M5 7h10l-1 9H6L5 7z" stroke="rgba(80,120,200,.5)" stroke-width="1.4" stroke-linejoin="round"/>' },
-      { n:'دیسک پریود', b:'پدیا · درونی', p:'۱۹۵,۰۰۰', svg:'<ellipse cx="10" cy="10" rx="7" ry="4" stroke="rgba(80,120,200,.5)" stroke-width="1.5"/><ellipse cx="10" cy="10" rx="3" ry="1.5" fill="rgba(80,120,200,.28)"/>' },
+      { n:'ماکسی پلاس پرو', b:'ظرفیت بالا', p:'۶۲,۰۰۰', best:true, svg:'<path d="M10 3v13M6.5 12l3.5 4 3.5-4" stroke="rgba(80,120,200,.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' },
+      { n:'اولترا ماکسی شب', b:'ترکیبی', p:'۵۵,۰۰۰', svg:'<rect x="3" y="8" width="14" height="5" rx="2.5" fill="rgba(80,120,200,.35)"/>' },
+      { n:'شورت پریود هوی', b:'پارچه', p:'۲۶۰,۰۰۰', svg:'<path d="M5 7h10l-1 9H6L5 7z" stroke="rgba(80,120,200,.5)" stroke-width="1.4" stroke-linejoin="round"/>' },
+      { n:'دیسک پریود', b:'درونی', p:'۱۹۵,۰۰۰', svg:'<ellipse cx="10" cy="10" rx="7" ry="4" stroke="rgba(80,120,200,.5)" stroke-width="1.5"/>' },
     ],
     empathy:{ icon:'💙', quote:'اون روزایی که جسم و روحت هر دو سنگینن.', desc:'این استرس اضافه لازم نیست تحملش کنی.' },
     footer:'💙 محصولات سنگین با <strong>۳ برابر ظرفیت معمولی</strong> طراحی شدن.',
@@ -541,17 +877,17 @@ const moods = {
   travel: {
     eyebrow:'سفر و جاده', title:'همیشه در راهم',
     quote:'چمدونت آماده‌ست، روحت آزاده — پریود نباید هیچ سفری رو لغو کنه.',
-    icon:`<svg viewBox="0 0 20 20" fill="none"><rect x="5" y="7" width="10" height="8" rx="2" stroke="rgba(160,110,40,.5)" stroke-width="1.5"/><path d="M8 7V6a2 2 0 0 1 4 0v1" stroke="rgba(160,110,40,.4)" stroke-width="1.3" stroke-linecap="round"/><path d="M5 11h10" stroke="rgba(160,110,40,.25)" stroke-width="1.1"/></svg>`,
+    icon:`<svg viewBox="0 0 20 20" fill="none"><rect x="5" y="7" width="10" height="8" rx="2" stroke="rgba(160,110,40,.5)" stroke-width="1.5"/><path d="M8 7V6a2 2 0 0 1 4 0v1" stroke="rgba(160,110,40,.4)" stroke-width="1.3" stroke-linecap="round"/></svg>`,
     features:[
       { title:'کوچیک، سبک، بی‌صدا', desc:'توی کیف دستی جا می‌شه — رازت پیش ماست', icon:`<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="7" width="12" height="9" rx="2" stroke="rgba(160,110,40,.5)" stroke-width="1.3"/><path d="M7 7V6a3 3 0 0 1 6 0v1" stroke="rgba(160,110,40,.4)" stroke-width="1.2" stroke-linecap="round"/></svg>` },
-      { title:'برای هر مقصدی آماده', desc:'چه هوا گرم باشه چه سرد، چه هتل چه چادر', icon:`<svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="rgba(160,110,40,.12)" stroke="rgba(160,110,40,.45)" stroke-width="1.2"/><circle cx="12" cy="9" r="2.5" fill="rgba(160,110,40,.3)"/></svg>` },
+      { title:'برای هر مقصدی آماده', desc:'چه هوا گرم باشه چه سرد، چه هتل چه چادر', icon:`<svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="rgba(160,110,40,.12)" stroke="rgba(160,110,40,.45)" stroke-width="1.2"/></svg>` },
     ],
     cta:'محصولات سفر',
     products:[
-      { n:'تراول کیت', b:'پدیا · بسته سفر', p:'۱۲۵,۰۰۰', best:true, svg:'<rect x="4" y="7" width="12" height="9" rx="2" stroke="rgba(160,110,40,.5)" stroke-width="1.4"/><path d="M7 7V6a3 3 0 0 1 6 0v1" stroke="rgba(160,110,40,.4)" stroke-width="1.2" stroke-linecap="round"/>' },
-      { n:'مینی پد اینویزیبل', b:'پدیا · فشرده', p:'۳۲,۰۰۰', svg:'<rect x="5" y="9" width="10" height="3" rx="1.5" fill="rgba(160,110,40,.38)"/>' },
-      { n:'کاپ سیلیکونی', b:'پدیا · قابل استفاده مجدد', p:'۱۸۵,۰۰۰', svg:'<path d="M6 7h8l-2 8H8L6 7z" stroke="rgba(160,110,40,.5)" stroke-width="1.4" stroke-linejoin="round"/>' },
-      { n:'دستمال گسسته', b:'پدیا · بی‌صدا', p:'۴۵,۰۰۰', svg:'<rect x="3" y="7" width="14" height="7" rx="2" stroke="rgba(160,110,40,.5)" stroke-width="1.4"/>' },
+      { n:'تراول کیت', b:'بسته سفر', p:'۱۲۵,۰۰۰', best:true, svg:'<rect x="4" y="7" width="12" height="9" rx="2" stroke="rgba(160,110,40,.5)" stroke-width="1.4"/><path d="M7 7V6a3 3 0 0 1 6 0v1" stroke="rgba(160,110,40,.4)" stroke-width="1.2" stroke-linecap="round"/>' },
+      { n:'مینی پد اینویزیبل', b:'فشرده', p:'۳۲,۰۰۰', svg:'<rect x="5" y="9" width="10" height="3" rx="1.5" fill="rgba(160,110,40,.38)"/>' },
+      { n:'کاپ سیلیکونی', b:'قابل استفاده مجدد', p:'۱۸۵,۰۰۰', svg:'<path d="M6 7h8l-2 8H8L6 7z" stroke="rgba(160,110,40,.5)" stroke-width="1.4" stroke-linejoin="round"/>' },
+      { n:'دستمال گسسته', b:'بی‌صدا', p:'۴۵,۰۰۰', svg:'<rect x="3" y="7" width="14" height="7" rx="2" stroke="rgba(160,110,40,.5)" stroke-width="1.4"/>' },
     ],
     empathy:{ icon:'✈️', quote:'چمدونت بسته‌ست، قلبت هیجان‌زده‌ست.', desc:'با پدیا دیگه نیازی نیست نگران پریود توی سفر باشی.' },
     footer:'🧳 کیت سفر پدیا <strong>توی هر کیف دستی جا می‌شه</strong>.',
@@ -559,8 +895,8 @@ const moods = {
   }
 };
 
+/* ─────────── MOOD PANEL ─────────── */
 let currentMood = 'night';
-
 function renderPanel(mood) {
   const d = moods[mood];
   const panel = document.getElementById('moodPanel');
@@ -569,10 +905,7 @@ function renderPanel(mood) {
   inner.innerHTML = `
     <div class="mp-head">
       <div class="mp-icon">${d.icon}</div>
-      <div>
-        <div class="mp-eyebrow">${d.eyebrow}</div>
-        <div class="mp-title">${d.title}</div>
-      </div>
+      <div><div class="mp-eyebrow">${d.eyebrow}</div><div class="mp-title">${d.title}</div></div>
     </div>
     <div class="mp-quote">${d.quote}</div>
     <div class="mp-features">
@@ -585,21 +918,16 @@ function renderPanel(mood) {
     <button class="mp-cta" onclick="openPanel('${mood}')">
       ${d.cta}
       <svg viewBox="0 0 12 12" fill="none"><path d="M10 6H2M6 2l4 4-4 4" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-  `;
+    </button>`;
 }
-
 function switchMood(mood) {
   if (mood === currentMood) return;
   currentMood = mood;
   document.querySelectorAll('.mood-tab').forEach(t => t.classList.toggle('active', t.dataset.mood === mood));
   renderPanel(mood);
 }
-
-// init
 renderPanel('night');
 
-// Product panel
 function openPanel(type) {
   const d = moods[type];
   document.getElementById('epCtx').textContent = d.eyebrow;
@@ -619,10 +947,7 @@ function openPanel(type) {
     </div>`).join('');
   document.getElementById('epEmpathy').innerHTML = `
     <div class="ep-empathy-icon">${d.empathy.icon}</div>
-    <div class="ep-empathy-body">
-      <div class="ep-empathy-quote">${d.empathy.quote}</div>
-      <div class="ep-empathy-desc">${d.empathy.desc}</div>
-    </div>`;
+    <div><div class="ep-empathy-quote">${d.empathy.quote}</div><div class="ep-empathy-desc">${d.empathy.desc}</div></div>`;
   document.getElementById('epFooter').innerHTML = d.footer;
   document.getElementById('overlay').classList.add('on');
   document.getElementById('expPanel').classList.add('open');
@@ -637,9 +962,9 @@ const ep=document.getElementById('expPanel');
 let sy=0;
 ep.addEventListener('touchstart',e=>{sy=e.touches[0].clientY;});
 ep.addEventListener('touchend',e=>{if(e.changedTouches[0].clientY-sy>90)closePanel();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePanel();closeBrandDrawer();}});
 
-// Freeze
+/* ─────────── FREEZE ─────────── */
 let freezeOpen=false, selectedMonths=6;
 function toggleFreeze(){ freezeOpen=!freezeOpen; document.getElementById('freezeBanner').classList.toggle('open',freezeOpen); calcUpdate(); }
 function selectPlan(btn){ document.querySelectorAll('.fp-plan-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); selectedMonths=parseInt(btn.dataset.months); calcUpdate(); }
@@ -665,7 +990,7 @@ function calcUpdate(){
 }
 calcUpdate();
 
-// Chat
+/* ─────────── CHAT ─────────── */
 const replies=['خوشحالم که اینجایی 💜','می‌فهمم دقیقاً چی می‌گی','هیچ سوالی اشتباه نیست — بپرس','کنارتم قدم به قدم','خوشحال می‌شم بیشتر توضیح بدی'];
 let ri=0;
 const bAv=`<svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="2" fill="white"/><circle cx="5" cy="5" r="4" stroke="white" stroke-width=".8" opacity=".5"/></svg>`;
@@ -681,6 +1006,256 @@ function sendMsg(){
   },400);
 }
 document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')sendMsg();});
+
+/* ─────────── BRANDS DATA ─────────── */
+const brands = [
+  {
+    id:'naty', name:'ناتی', tagline:'ارگانیک اروپایی',
+    desc:'برند اروپایی با پنبه ارگانیک صددرصد طبیعی — انتخاب مادران آگاه',
+    color:'#E8F7EE', accent:'#2D8652',
+    svg:`<svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" fill="#D4F0DF"/><path d="M20 32c0-6.6 5.4-12 12-12s12 5.4 12 12" stroke="#2D8652" stroke-width="2.5" stroke-linecap="round"/><path d="M26 38c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#2D8652" stroke-width="2" stroke-linecap="round" opacity=".6"/><circle cx="32" cy="44" r="3" fill="#2D8652" opacity=".7"/></svg>`,
+    products:[
+      { n:'نایت اورگانیک', sub:'شبانه', p:'۵۸,۰۰۰', best:true, color:'#D4F0DF', acnt:'#2D8652' },
+      { n:'دیلی ارگانیک', sub:'روزانه', p:'۴۲,۰۰۰', color:'#E8F7EE', acnt:'#2D8652' },
+      { n:'اولترا تین', sub:'فوق‌نازک', p:'۳۸,۰۰۰', color:'#F0FBF4', acnt:'#2D8652' },
+      { n:'پنتی لاینر', sub:'محافظ روزانه', p:'۲۸,۰۰۰', color:'#EAF8F0', acnt:'#2D8652' },
+    ],
+    footer:'🌿 ناتی دارای گواهینامه <strong>EU Ecolabel</strong> و بدون کلر است.',
+  },
+  {
+    id:'always', name:'آلویز', tagline:'رهبر جهانی',
+    desc:'محبوب‌ترین برند دنیا با بیش از ۶۰ سال تجربه و تکنولوژی پیشرفته',
+    color:'#E8F0FF', accent:'#2B5FCC',
+    svg:`<svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" fill="#DCE8FF"/><path d="M18 38l14-20 14 20" stroke="#2B5FCC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 38l8-11 8 11" stroke="#2B5FCC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg>`,
+    products:[
+      { n:'اینفینیتی پلاس', sub:'جذب بالا', p:'۶۵,۰۰۰', best:true, color:'#DCE8FF', acnt:'#2B5FCC' },
+      { n:'آلترا تین', sub:'فوق‌نازک', p:'۴۸,۰۰۰', color:'#E8F0FF', acnt:'#2B5FCC' },
+      { n:'نایت ماکسی', sub:'شبانه', p:'۵۲,۰۰۰', color:'#EEF4FF', acnt:'#2B5FCC' },
+      { n:'دیسکریت', sub:'روزانه', p:'۳۵,۰۰۰', color:'#F2F6FF', acnt:'#2B5FCC' },
+    ],
+    footer:'💙 آلویز در <strong>۱۸۰ کشور</strong> به فروش می‌رسد.',
+  },
+  {
+    id:'libresse', name:'لیبرس', tagline:'سوئدی اصیل',
+    desc:'برند سوئدی با رویکرد جسورانه — برای زنانی که از بدنشان خجالت نمی‌کشن',
+    color:'#FFF0E8', accent:'#CC4B20',
+    svg:`<svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" fill="#FFE0D0"/><rect x="18" y="24" width="28" height="16" rx="8" fill="#CC4B20" opacity=".75"/><rect x="22" y="28" width="20" height="8" rx="4" fill="white" opacity=".6"/></svg>`,
+    products:[
+      { n:'بادی‌فرم نایت', sub:'شبانه', p:'۵۵,۰۰۰', best:true, color:'#FFE0D0', acnt:'#CC4B20' },
+      { n:'سنسیتیو', sub:'پوست حساس', p:'۵۰,۰۰۰', color:'#FFF0E8', acnt:'#CC4B20' },
+      { n:'اینویزیبل', sub:'نامرئی', p:'۴۲,۰۰۰', color:'#FFF5F0', acnt:'#CC4B20' },
+      { n:'اکتیو', sub:'ورزشی', p:'۴۸,۰۰۰', color:'#FFF8F5', acnt:'#CC4B20' },
+    ],
+    footer:'❤️ لیبرس برنده جایزه <strong>بهترین برند بهداشت زنان</strong> اروپا است.',
+  },
+  {
+    id:'whisper', name:'ویسپر', tagline:'ژاپنی باکیفیت',
+    desc:'از ژاپن، با تکنولوژی نانو — نازک‌ترین و باکیفیت‌ترین بافت در بازار',
+    color:'#FFF0F8', accent:'#B03070',
+    svg:`<svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" fill="#FFD6EC"/><path d="M32 18C24 18 18 24 18 32s6 14 14 14 14-6 14-14-6-14-14-14z" stroke="#B03070" stroke-width="2.2"/><path d="M26 32c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#B03070" stroke-width="2" stroke-linecap="round" opacity=".7"/><circle cx="32" cy="38" r="2.5" fill="#B03070"/></svg>`,
+    products:[
+      { n:'ناچورال پلاس', sub:'طبیعی', p:'۶۰,۰۰۰', best:true, color:'#FFD6EC', acnt:'#B03070' },
+      { n:'دریم‌کلین', sub:'فوق‌نازک', p:'۵۲,۰۰۰', color:'#FFF0F8', acnt:'#B03070' },
+      { n:'سافت‌گارد نایت', sub:'شبانه', p:'۵۸,۰۰۰', color:'#FFF5FA', acnt:'#B03070' },
+      { n:'اکتیو', sub:'ورزشی', p:'۴۵,۰۰۰', color:'#FFFAFC', acnt:'#B03070' },
+    ],
+    footer:'🌸 تکنولوژی <strong>Nano Soft</strong> ویسپر، تجربه‌ای متفاوت.',
+  },
+  {
+    id:'kotex', name:'کوتکس', tagline:'پیشرو در نوآوری',
+    desc:'اولین برندی که به زنان احترام گذاشت — از ۱۹۲۰ تا امروز',
+    color:'#F0F0FF', accent:'#5040B0',
+    svg:`<svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" fill="#DDD8F8"/><rect x="20" y="26" width="24" height="12" rx="6" fill="#5040B0" opacity=".7"/><path d="M26 32h12" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M32 26v12" stroke="white" stroke-width="2" stroke-linecap="round" opacity=".5"/></svg>`,
+    products:[
+      { n:'یو پروتکت', sub:'محافظت کامل', p:'۵۴,۰۰۰', best:true, color:'#DDD8F8', acnt:'#5040B0' },
+      { n:'ملودی', sub:'روزانه', p:'۴۰,۰۰۰', color:'#EEECff', acnt:'#5040B0' },
+      { n:'آنیون', sub:'آنتی‌باکتریال', p:'۶۲,۰۰۰', color:'#F4F2FF', acnt:'#5040B0' },
+      { n:'پنتی‌لاینر', sub:'محافظ روزانه', p:'۲۵,۰۰۰', color:'#F8F7FF', acnt:'#5040B0' },
+    ],
+    footer:'💜 کوتکس اولین برند دارای <strong>گواهی FDA</strong> بود.',
+  },
+  {
+    id:'organyc', name:'ارگانیک', tagline:'صددرصد ارگانیک',
+    desc:'ایتالیایی، گواهی‌دار، پنبه خالص — برای کسانی که هیچ سازشی نمی‌کنن',
+    color:'#EEFAF2', accent:'#1A7A40',
+    svg:`<svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" fill="#C8EDD8"/><path d="M32 18s-8 5-8 12c0 4.4 3.6 8 8 8s8-3.6 8-8c0-7-8-12-8-12z" fill="#1A7A40" opacity=".6"/><path d="M24 38s-2 4 8 6 8-6 8-6" stroke="#1A7A40" stroke-width="1.8" stroke-linecap="round" opacity=".5"/></svg>`,
+    products:[
+      { n:'اورگانیک ماکسی', sub:'ماکسی', p:'۷۲,۰۰۰', best:true, color:'#C8EDD8', acnt:'#1A7A40' },
+      { n:'اورگانیک نایت', sub:'شبانه', p:'۶۸,۰۰۰', color:'#DAEEE6', acnt:'#1A7A40' },
+      { n:'اورگانیک نرمال', sub:'معمولی', p:'۵۸,۰۰۰', color:'#EAF5EE', acnt:'#1A7A40' },
+      { n:'تامپون ارگانیک', sub:'درونی', p:'۴۸,۰۰۰', color:'#F2F9F5', acnt:'#1A7A40' },
+    ],
+    footer:'🍃 ارگانیک دارای گواهینامه <strong>GOTS</strong> است.',
+  },
+  {
+    id:'corman', name:'کورمن', tagline:'ایتالیایی ظریف',
+    desc:'پنبه خالص ایتالیایی با بافت ابریشمی — لطافتی که احساس می‌کنی',
+    color:'#FFF8E8', accent:'#A07820',
+    svg:`<svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" fill="#F5E8C0"/><ellipse cx="32" cy="32" rx="14" ry="8" fill="#A07820" opacity=".55"/><ellipse cx="32" cy="32" rx="8" ry="4" fill="#A07820" opacity=".35"/><circle cx="32" cy="32" r="3" fill="#A07820" opacity=".7"/></svg>`,
+    products:[
+      { n:'سافت کاتن نایت', sub:'شبانه', p:'۶۴,۰۰۰', best:true, color:'#F5E8C0', acnt:'#A07820' },
+      { n:'فلفلی', sub:'ترکیبی', p:'۵۵,۰۰۰', color:'#FFF5DC', acnt:'#A07820' },
+      { n:'اینویزیبل', sub:'نامرئی', p:'۴۸,۰۰۰', color:'#FFF8EC', acnt:'#A07820' },
+      { n:'ارگانیک لاین', sub:'طبیعی', p:'۶۸,۰۰۰', color:'#FFFCF2', acnt:'#A07820' },
+    ],
+    footer:'✨ کورمن با <strong>پنبه ایتالیایی خالص</strong> ساخته می‌شود.',
+  },
+  {
+    id:'natracare', name:'ناتراکر', tagline:'پیشرو محیط زیست',
+    desc:'بریتانیایی، فمینیست، پیشرو در بهداشت پایدار — از ۱۹۸۹',
+    color:'#F0FAF0', accent:'#2A7040',
+    svg:`<svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" fill="#BEE8C8"/><path d="M32 44V24M24 32l8-8 8 8" stroke="#2A7040" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 44h20" stroke="#2A7040" stroke-width="2" stroke-linecap="round" opacity=".5"/></svg>`,
+    products:[
+      { n:'اولترا پد', sub:'جذب بالا', p:'۷۵,۰۰۰', best:true, color:'#BEE8C8', acnt:'#2A7040' },
+      { n:'پنتی لاینر', sub:'روزانه', p:'۳۸,۰۰۰', color:'#D0EED8', acnt:'#2A7040' },
+      { n:'سوپر پد', sub:'ماکسی', p:'۶۸,۰۰۰', color:'#E0F5E8', acnt:'#2A7040' },
+      { n:'تامپون', sub:'درونی', p:'۵۲,۰۰۰', color:'#EDF9F0', acnt:'#2A7040' },
+    ],
+    footer:'🌍 ناتراکر <strong>۱۰۰٪ قابل بازیافت</strong> است.',
+  },
+  {
+    id:'saba', name:'صبا', tagline:'ایرانی معتمد',
+    desc:'برند ایرانی با ۳۰ سال سابقه — قابل اعتماد، در دسترس، کنار توست',
+    color:'#FFF0F4', accent:'#C03060',
+    svg:`<svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" fill="#FFCCD8"/><path d="M20 36l12-16 12 16" stroke="#C03060" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 36l6-8 6 8" stroke="#C03060" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/><circle cx="32" cy="38" r="2.5" fill="#C03060"/></svg>`,
+    products:[
+      { n:'صبا شب', sub:'شبانه', p:'۳۸,۰۰۰', best:true, color:'#FFCCD8', acnt:'#C03060' },
+      { n:'صبا روز', sub:'روزانه', p:'۲۸,۰۰۰', color:'#FFE0E8', acnt:'#C03060' },
+      { n:'صبا نازک', sub:'فوق‌نازک', p:'۳۲,۰۰۰', color:'#FFEEF2', acnt:'#C03060' },
+      { n:'صبا ماکسی', sub:'ماکسی', p:'۴۲,۰۰۰', color:'#FFF5F8', acnt:'#C03060' },
+    ],
+    footer:'🇮🇷 صبا در <strong>۳۰۰۰ داروخانه</strong> سراسر ایران موجود است.',
+  },
+  {
+    id:'molped', name:'مولپد', tagline:'ترکی مقرون‌به‌صرفه',
+    desc:'کیفیت اروپایی با قیمت منطقی — ترکی که به قلب بازار ایران راه پیدا کرد',
+    color:'#F8F0FF', accent:'#7040B0',
+    svg:`<svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" fill="#E8D8FF"/><path d="M18 32a14 14 0 0 1 28 0" stroke="#7040B0" stroke-width="2.5" stroke-linecap="round"/><path d="M22 38a10 10 0 0 1 20 0" stroke="#7040B0" stroke-width="2" stroke-linecap="round" opacity=".6"/><path d="M26 44a6 6 0 0 1 12 0" stroke="#7040B0" stroke-width="1.8" stroke-linecap="round" opacity=".4"/></svg>`,
+    products:[
+      { n:'مولپد نایت', sub:'شبانه', p:'۳۵,۰۰۰', best:true, color:'#E8D8FF', acnt:'#7040B0' },
+      { n:'سافت فیل', sub:'نرم', p:'۲۸,۰۰۰', color:'#F0E8FF', acnt:'#7040B0' },
+      { n:'اولترا اینویزیبل', sub:'نامرئی', p:'۳۲,۰۰۰', color:'#F6F0FF', acnt:'#7040B0' },
+      { n:'کتون', sub:'پنبه‌ای', p:'۳۰,۰۰۰', color:'#FAF5FF', acnt:'#7040B0' },
+    ],
+    footer:'💡 مولپد بهترین <strong>رابطه کیفیت به قیمت</strong> را دارد.',
+  },
+];
+
+/* ─────────── CAROUSEL ─────────── */
+const VISIBLE = 5;
+let brandOffset = 0;
+let activeBrand = null;
+
+function buildCarousel() {
+  const track = document.getElementById('brandsTrack');
+  const dots = document.getElementById('brandsDots');
+  track.innerHTML = brands.map((b, i) => `
+    <div class="brand-card" data-idx="${i}" onclick="openBrandDrawer(${i})">
+      <div class="brand-circle">${b.svg}</div>
+      <div class="brand-name">${b.name}</div>
+    </div>`).join('');
+  // dots: one per visible page
+  const pages = Math.ceil(brands.length / VISIBLE);
+  dots.innerHTML = Array.from({length: pages}, (_, i) =>
+    `<div class="bdot${i===0?' active':''}" onclick="goToPage(${i})"></div>`).join('');
+}
+
+function getCardWidth() {
+  const card = document.querySelector('.brand-card');
+  if (!card) return 124;
+  const gap = 20;
+  return card.offsetWidth + gap;
+}
+
+function slideBrands(dir) {
+  const maxOffset = brands.length - VISIBLE;
+  brandOffset = Math.max(0, Math.min(brandOffset + dir * VISIBLE, maxOffset));
+  applySlide();
+}
+function goToPage(page) {
+  brandOffset = page * VISIBLE;
+  applySlide();
+}
+function applySlide() {
+  const track = document.getElementById('brandsTrack');
+  const cw = getCardWidth();
+  // RTL: slide right for earlier items
+  track.style.transform = `translateX(${brandOffset * cw}px)`;
+  // dots
+  const page = Math.floor(brandOffset / VISIBLE);
+  document.querySelectorAll('.bdot').forEach((d, i) => d.classList.toggle('active', i === page));
+}
+
+/* drag / swipe on carousel */
+let dragStartX = 0, isDragging = false;
+document.addEventListener('DOMContentLoaded', () => {
+  buildCarousel();
+  const track = document.getElementById('brandsTrack');
+  track.addEventListener('mousedown', e => { isDragging = true; dragStartX = e.clientX; });
+  document.addEventListener('mouseup', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    const dx = e.clientX - dragStartX;
+    if (Math.abs(dx) > 40) slideBrands(dx > 0 ? -1 : 1);
+  });
+  track.addEventListener('touchstart', e => { dragStartX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - dragStartX;
+    if (Math.abs(dx) > 40) slideBrands(dx > 0 ? -1 : 1);
+  });
+});
+
+/* ─────────── BRAND DRAWER ─────────── */
+function openBrandDrawer(idx) {
+  const b = brands[idx];
+  // mark active
+  document.querySelectorAll('.brand-card').forEach((c, i) => c.classList.toggle('active', i === idx));
+  activeBrand = idx;
+
+  document.getElementById('bdLogoWrap').innerHTML = b.svg;
+  document.getElementById('bdLogoWrap').style.background = b.color;
+  document.getElementById('bdBrandName').textContent = b.name;
+  document.getElementById('bdBrandDesc').textContent = b.desc;
+
+  document.getElementById('bdProducts').innerHTML = b.products.map(p => `
+    <div class="bdp">
+      <div class="bdp-vis" style="background:${p.color}">
+        <svg viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="9" width="16" height="7" rx="3.5" fill="${p.acnt}" opacity=".3"/>
+          <rect x="6" y="11" width="12" height="3" rx="1.5" fill="${p.acnt}" opacity=".5"/>
+        </svg>
+        ${p.best ? '<div class="bdp-badge">انتخاب برتر</div>' : ''}
+      </div>
+      <div class="bdp-body">
+        <div class="bdp-name">${p.n}</div>
+        <div class="bdp-sub">${p.sub}</div>
+        <div class="bdp-foot">
+          <div class="bdp-price">${p.p} ت</div>
+          <button class="bdp-btn">+</button>
+        </div>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('bdFooter').innerHTML = b.footer;
+
+  document.getElementById('bdOverlay').classList.add('on');
+  document.getElementById('brandDrawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeBrandDrawer() {
+  document.getElementById('bdOverlay').classList.remove('on');
+  document.getElementById('brandDrawer').classList.remove('open');
+  document.body.style.overflow = '';
+  document.querySelectorAll('.brand-card').forEach(c => c.classList.remove('active'));
+  activeBrand = null;
+}
+
+// swipe down to close drawer
+const bd = document.getElementById('brandDrawer');
+let bdStartY = 0;
+bd.addEventListener('touchstart', e => { bdStartY = e.touches[0].clientY; });
+bd.addEventListener('touchend', e => { if (e.changedTouches[0].clientY - bdStartY > 80) closeBrandDrawer(); });
 </script>
 </body>
 </html>
